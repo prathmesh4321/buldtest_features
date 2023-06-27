@@ -1,0 +1,2652 @@
+{
+  "unique_tags": [
+    "singularity",
+    "python",
+    "fail",
+    "jobs",
+    "containers",
+    "storage",
+    "ping",
+    "tutorials",
+    "network",
+    "pass",
+    "configuration",
+    "lsf",
+    "filesystem",
+    "slurm",
+    "system",
+    "cobalt"
+  ],
+  "unique_executors": [
+    "generic.local.bash",
+    "generic.local.(bash|sh)",
+    "generic.local.sh",
+    "generic.local.(sh|bash)"
+  ],
+  "buildspecs": {
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/add_numbers.yml": {
+      "add_numbers": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Add X+Y",
+        "tags": [
+          "tutorials"
+        ],
+        "vars": {
+          "X": 1,
+          "Y": 2
+        },
+        "run": "echo \"$X+$Y=\" $(($X+$Y))"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/burstbuffer_datawarp_executors.yml": {
+      "create_burst_buffer_executors": {
+        "type": "script",
+        "executor": "generic.local.(sh|bash)",
+        "sbatch": [
+          "-N 1",
+          "-t 10",
+          "-C knl"
+        ],
+        "description": "Create a burst buffer for multiple executors",
+        "tags": [
+          "jobs"
+        ],
+        "executors": {
+          "generic.local.sh": {
+            "BB": [
+              "create_persistent name=buffer1 capacity=10GB access_mode=striped type=scratch"
+            ],
+            "DW": [
+              "persistentdw name=buffer1"
+            ]
+          },
+          "generic.local.bash": {
+            "BB": [
+              "create_persistent name=buffer2 capacity=10GB access_mode=striped type=scratch"
+            ],
+            "DW": [
+              "persistentdw name=buffer2"
+            ]
+          }
+        },
+        "run": "hostname"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/gcc_version.yml": {
+      "gcc_version": {
+        "type": "script",
+        "description": "Print gcc version",
+        "executor": "generic.local.bash",
+        "run": "gcc --version"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml": {
+      "hello_world": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": "tutorials",
+        "description": "hello world example",
+        "run": "echo \"hello world!\""
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/maintainers_example.yml": {
+      "foo_bar": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "tags": "tutorials",
+        "description": "prints variable $FOO",
+        "vars": {
+          "FOO": "BAR"
+        },
+        "run": "echo $FOO"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/python-hello.yml": {
+      "python_hello": {
+        "type": "script",
+        "description": "Hello World python",
+        "executor": "generic.local.bash",
+        "tags": "python",
+        "run": "python hello.py"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/python-shell.yml": {
+      "circle_area": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "shell": "python",
+        "description": "Calculate circle of area given a radius",
+        "tags": [
+          "tutorials",
+          "python"
+        ],
+        "run": "import math\nradius = 2\narea = math.pi * radius * radius\nprint(\"Circle Radius \", radius)\nprint(\"Area of circle \", area)\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/shebang.yml": {
+      "bash_login_shebang": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "shebang": "#!/bin/bash -l",
+        "description": "customize shebang line with bash login shell",
+        "tags": "tutorials",
+        "run": "shopt -q login_shell && echo 'Login Shell' || echo 'Not Login Shell'",
+        "status": {
+          "regex": {
+            "exp": "^Login Shell$",
+            "stream": "stdout"
+          }
+        }
+      },
+      "bash_nonlogin_shebang": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "shebang": "#!/bin/bash",
+        "description": "customize shebang line with default bash (nonlogin) shell",
+        "tags": "tutorials",
+        "run": "shopt -q login_shell && echo 'Login Shell' || echo 'Not Login Shell'",
+        "status": {
+          "regex": {
+            "exp": "^Not Login Shell$",
+            "stream": "stdout"
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/shell_examples.yml": {
+      "_bin_sh_shell": {
+        "executor": "generic.local.sh",
+        "type": "script",
+        "description": "/bin/sh shell example",
+        "shell": "/bin/sh",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "bzip2 --help"
+      },
+      "_bin_bash_shell": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "/bin/bash shell example",
+        "shell": "/bin/bash",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "bzip2 -h"
+      },
+      "bash_shell": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "bash shell example",
+        "shell": "bash",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "echo $SHELL"
+      },
+      "sh_shell": {
+        "executor": "generic.local.sh",
+        "type": "script",
+        "description": "sh shell example",
+        "shell": "sh",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "echo $SHELL"
+      },
+      "shell_options": {
+        "executor": "generic.local.sh",
+        "type": "script",
+        "description": "shell options",
+        "shell": "sh -x",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "echo $SHELL\nhostname\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/skip_buildspec.yml": {
+      "skip_all_tests": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "All test in this buildspec are skipped",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "hostname"
+      },
+      "this_test_is_also_skipped": {
+        "type": "script",
+        "skip": false,
+        "executor": "generic.local.bash",
+        "description": "This test is also skipped even if skip is defined in test",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "hostname"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/skip_tests.yml": {
+      "skip": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test is skipped",
+        "skip": true,
+        "tags": [
+          "tutorials"
+        ],
+        "run": "hostname"
+      },
+      "unskipped": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test is not skipped",
+        "skip": false,
+        "tags": [
+          "tutorials"
+        ],
+        "run": "hostname"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/sleep.yml": {
+      "sleep": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "sleep 2 seconds",
+        "tags": [
+          "tutorials"
+        ],
+        "vars": {
+          "SLEEP_TIME": 2
+        },
+        "run": "sleep $SLEEP_TIME"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/summary_example.yml": {
+      "summary_example": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "The summary field can be a multi-line string and exceed 80 char",
+        "tags": [
+          "tutorials"
+        ],
+        "summary": "This is a long description of test that\ncan exceed 80 characters and be multiline\n",
+        "run": "hostname"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/tags_example.yml": {
+      "string_tag": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "tags can be a string",
+        "tags": "network",
+        "run": "hostname"
+      },
+      "list_of_strings_tags": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "tags can be a list of strings",
+        "tags": [
+          "network",
+          "ping"
+        ],
+        "run": "ping -c 4 www.google.com"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/vars.yml": {
+      "variables_bash": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Declare shell variables in bash",
+        "tags": [
+          "tutorials"
+        ],
+        "vars": {
+          "X": 1,
+          "Y": 2,
+          "literalstring": "this is a literal string",
+          "singlequote": "\\'singlequote\\'",
+          "doublequote": "\\\"doublequote\\\"",
+          "current_user": "$(whoami)",
+          "num_files": "`find $HOME -type f -maxdepth 1 | wc -l`",
+          "multiline_string": "Hello my name is Bob \\n\nI am 30 years old\n"
+        },
+        "run": "echo \"$X+$Y=\"$(($X+$Y))\necho $literalstring\necho $singlequote\necho $doublequote\necho \"current user:\" $current_user\necho \"number of files:\" $num_files\necho -e $multiline_string\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/job_dependency/ex1.yml": {
+      "jobA": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "no job dependency",
+        "run": "echo \"This job has no dependency\"\nsleep 5\n"
+      },
+      "jobB": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "job dependency on jobA",
+        "needs": [
+          "jobA"
+        ],
+        "run": "echo \"This job depends on jobA\"\nsleep 2\n"
+      },
+      "jobC": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "job dependency on jobA and jobB",
+        "needs": [
+          "jobA",
+          "jobB"
+        ],
+        "run": "echo \"This job depends on jobA and jobB\"\nsleep 2\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/job_dependency/ex2.yml": {
+      "test1": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will pass with exit 1",
+        "run": "exit 1",
+        "status": {
+          "state": "PASS"
+        }
+      },
+      "test2": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will run if test1 has returncode 1",
+        "run": "exit 2",
+        "status": {
+          "state": "PASS"
+        },
+        "needs": [
+          {
+            "test1": {
+              "returncode": 1
+            }
+          }
+        ]
+      },
+      "test3": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will run if test1 has returncode 1 and test2 has returncode 2",
+        "run": "exit 1",
+        "status": {
+          "state": "PASS"
+        },
+        "needs": [
+          {
+            "test1": {
+              "returncode": 1
+            }
+          },
+          {
+            "test2": {
+              "returncode": 2
+            }
+          }
+        ]
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/job_dependency/ex3.yml": {
+      "pass_test": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will always pass",
+        "status": {
+          "state": "PASS"
+        },
+        "run": "echo \"This test will pass\"\nsleep 2\n"
+      },
+      "fail_test": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will run if test 'pass_test' is in state 'PASS'",
+        "status": {
+          "state": "FAIL"
+        },
+        "needs": [
+          {
+            "pass_test": {
+              "state": "PASS"
+            }
+          }
+        ],
+        "run": "echo \"This test will fail\"\nsleep 2\n"
+      },
+      "pass_and_fail_test": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will run if pass_test is 'PASS' and fail_test is 'FAIL'",
+        "needs": [
+          {
+            "pass_test": {
+              "state": "PASS"
+            }
+          },
+          {
+            "fail_test": {
+              "state": "FAIL"
+            }
+          }
+        ],
+        "run": "sleep 2\nexit 1\n",
+        "status": {
+          "returncode": 1
+        }
+      },
+      "final_test": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Test will run after 'pass_test', 'fail_test', and 'pass_and_fail_test'",
+        "needs": [
+          "pass_test",
+          "fail_test",
+          {
+            "pass_and_fail_test": {
+              "returncode": 1
+            }
+          }
+        ],
+        "run": "sleep 2\necho \"Hello world\"\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/job_dependency/ex4.yml": {
+      "runtime_test": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will sleep 5 second but will fail due to runtime 2sec",
+        "status": {
+          "runtime": {
+            "min": 2.0
+          }
+        },
+        "run": "sleep 5"
+      },
+      "runtime_test_pass": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will run when runtime_test_pass is PASS",
+        "needs": [
+          {
+            "runtime_test": {
+              "state": "PASS"
+            }
+          }
+        ],
+        "run": "echo \"Performing some action when test PASS\""
+      },
+      "runtime_test_fail": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will run when runtime_test_pass is FAIL",
+        "needs": [
+          {
+            "runtime_test": {
+              "state": "FAIL"
+            }
+          }
+        ],
+        "run": "echo \"Performing some action when test FAIL\""
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/metrics/metrics_file_regex_invalid_file.yml": {
+      "metric_file_regex_invalid_file": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "capture result metric from file path when we have invalid file path",
+        "run": "echo \"HPCG result is VALID with a GFLOP/s rating of=63.6515\" > hpcg.txt",
+        "tags": "tutorials",
+        "metrics": {
+          "hpcg_rating": {
+            "type": "float",
+            "file_regex": {
+              "exp": "(\\d+\\.\\d+)$",
+              "file": "bad_file.txt"
+            }
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/metrics/metrics_regex.yml": {
+      "metric_regex_example": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "capture result metric from output",
+        "run": "echo \"HPCG result is VALID with a GFLOP/s rating of=63.6515\"",
+        "tags": "tutorials",
+        "metrics": {
+          "hpcg_rating_stream": {
+            "type": "float",
+            "regex": {
+              "exp": "(\\d+\\.\\d+)$",
+              "stream": "stdout"
+            }
+          },
+          "hpcg_state_stream": {
+            "type": "str",
+            "regex": {
+              "exp": "(VALID)",
+              "stream": "stdout"
+            }
+          }
+        }
+      },
+      "metric_file_regex": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "capture result metric from file path",
+        "run": "echo \"HPCG result is VALID with a GFLOP/s rating of=63.6515\" > hpcg.txt",
+        "tags": "tutorials",
+        "metrics": {
+          "hpcg_rating_file": {
+            "type": "float",
+            "file_regex": {
+              "exp": "(\\d+\\.\\d+)$",
+              "file": "hpcg.txt"
+            }
+          },
+          "hpcg_state_file": {
+            "type": "str",
+            "file_regex": {
+              "exp": "(VALID)",
+              "file": "hpcg.txt"
+            }
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/multi_executors/executors_var_env_declaration.yml": {
+      "executors_vars_env_declaration": {
+        "type": "script",
+        "executor": "generic.local.(bash|sh)",
+        "description": "Declaring env and vars by executors section",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "echo \"X:\" $X\necho \"Y:\" $Y\necho $SHELL\n",
+        "executors": {
+          "generic.local.bash": {
+            "vars": {
+              "X": 1,
+              "Y": 3
+            },
+            "env": {
+              "SHELL": "bash"
+            }
+          },
+          "generic.local.sh": {
+            "vars": {
+              "X": 2,
+              "Y": 4
+            },
+            "env": {
+              "SHELL": "sh"
+            }
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/multi_executors/executor_regex_script.yml": {
+      "multiple_executors": {
+        "type": "script",
+        "executor": "generic.local.(bash|sh)",
+        "description": "run test with executor generic.local.bash and generic.local.sh executor",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "date"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/multi_executors/executor_scheduler.yml": {
+      "executors_sbatch_declaration": {
+        "type": "script",
+        "executor": "generic.local.(bash|sh)",
+        "description": "Declaring env and vars by executors section",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "hostname",
+        "sbatch": [
+          "-N 4"
+        ],
+        "executors": {
+          "generic.local.bash": {
+            "sbatch": [
+              "-n 4",
+              "-N 1",
+              "-t 30"
+            ]
+          },
+          "generic.local.sh": {
+            "sbatch": [
+              "-n 8",
+              "-N 1",
+              "-t 60"
+            ]
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/multi_executors/status_by_executors.yml": {
+      "status_returncode_by_executors": {
+        "type": "script",
+        "executor": "generic.local.(bash|sh)",
+        "description": "define status per executor type.",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "exit 0",
+        "executors": {
+          "generic.local.bash": {
+            "status": {
+              "returncode": [
+                0,
+                2
+              ]
+            }
+          },
+          "generic.local.sh": {
+            "status": {
+              "returncode": 1
+            }
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/assert_eq.yml": {
+      "assert_eq_example": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Test for assert equality",
+        "vars": {
+          "X": 1,
+          "Y": 1.5,
+          "first": "John",
+          "last": "Smith"
+        },
+        "run": "echo \"X: $X\"\necho \"Y: $Y\"\necho \"Name: $first $last\"\n",
+        "metrics": {
+          "x": {
+            "type": "int",
+            "regex": {
+              "stream": "stdout",
+              "exp": "X:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          },
+          "y": {
+            "type": "float",
+            "regex": {
+              "stream": "stdout",
+              "exp": "Y:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          },
+          "first": {
+            "type": "str",
+            "regex": {
+              "stream": "stdout",
+              "exp": "Name:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          },
+          "last": {
+            "type": "str",
+            "regex": {
+              "stream": "stdout",
+              "exp": "(Smith)$",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_eq": [
+            {
+              "name": "x",
+              "ref": 1
+            },
+            {
+              "name": "y",
+              "ref": 1.5
+            },
+            {
+              "name": "first",
+              "ref": "John"
+            },
+            {
+              "name": "last",
+              "ref": "Smith"
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/assert_eq_exceptions.yml": {
+      "assert_eq_invalid_metric": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "An invalid metric name will cause failure",
+        "vars": {
+          "X": 1
+        },
+        "run": "echo \"X: $X\"\n",
+        "metrics": {
+          "x": {
+            "type": "int",
+            "regex": {
+              "stream": "stdout",
+              "exp": "X:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_eq": [
+            {
+              "name": "x",
+              "ref": 1
+            },
+            {
+              "name": "invalid_metric",
+              "ref": "hello"
+            }
+          ]
+        }
+      },
+      "assert_eq_mismatch": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "This test will fail because there is a mismatch in metric x assert equality",
+        "vars": {
+          "X": 1
+        },
+        "run": "echo \"X: $X\"\n",
+        "metrics": {
+          "x": {
+            "type": "int",
+            "regex": {
+              "stream": "stdout",
+              "exp": "X:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_eq": [
+            {
+              "name": "x",
+              "ref": 2
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/assert_ge.yml": {
+      "stream_test": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Run stream test with metrics example using assert greater equal",
+        "env": {
+          "OMP_NUM_THREADS": 4
+        },
+        "run": "wget https://raw.githubusercontent.com/jeffhammond/STREAM/master/stream.c\ngcc -openmp -o stream stream.c\n./stream\n",
+        "metrics": {
+          "copy": {
+            "type": "float",
+            "regex": {
+              "exp": "Copy:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "scale": {
+            "type": "float",
+            "regex": {
+              "exp": "Scale:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "add": {
+            "type": "float",
+            "regex": {
+              "exp": "Add:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "triad": {
+            "type": "float",
+            "regex": {
+              "exp": "Triad:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_ge": [
+            {
+              "name": "copy",
+              "ref": 5000
+            },
+            {
+              "name": "scale",
+              "ref": 5500
+            },
+            {
+              "name": "add",
+              "ref": 6000
+            },
+            {
+              "name": "triad",
+              "ref": 6500
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/assert_gt.yml": {
+      "assert_gt_example": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Run stream test with metrics example using assert greater than.",
+        "env": {
+          "OMP_NUM_THREADS": 4
+        },
+        "run": "wget https://raw.githubusercontent.com/jeffhammond/STREAM/master/stream.c\ngcc -openmp -o stream stream.c\n./stream\n",
+        "metrics": {
+          "copy": {
+            "type": "float",
+            "regex": {
+              "exp": "Copy:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "scale": {
+            "type": "float",
+            "regex": {
+              "exp": "Scale:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "add": {
+            "type": "float",
+            "regex": {
+              "exp": "Add:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "triad": {
+            "type": "float",
+            "regex": {
+              "exp": "Triad:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_gt": [
+            {
+              "name": "copy",
+              "ref": 5000
+            },
+            {
+              "name": "scale",
+              "ref": 5500
+            },
+            {
+              "name": "add",
+              "ref": 6000
+            },
+            {
+              "name": "triad",
+              "ref": 6500
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/assert_le.yml": {
+      "assert_le_example": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Run stream test with metrics example using assert less than equal",
+        "env": {
+          "OMP_NUM_THREADS": 4
+        },
+        "run": "wget https://raw.githubusercontent.com/jeffhammond/STREAM/master/stream.c\ngcc -openmp -o stream stream.c\n./stream\n",
+        "metrics": {
+          "copy": {
+            "type": "float",
+            "regex": {
+              "exp": "Copy:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "scale": {
+            "type": "float",
+            "regex": {
+              "exp": "Scale:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "add": {
+            "type": "float",
+            "regex": {
+              "exp": "Add:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "triad": {
+            "type": "float",
+            "regex": {
+              "exp": "Triad:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_le": [
+            {
+              "name": "copy",
+              "ref": 5000
+            },
+            {
+              "name": "scale",
+              "ref": 5500
+            },
+            {
+              "name": "add",
+              "ref": 6000
+            },
+            {
+              "name": "triad",
+              "ref": 6500
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/assert_lt.yml": {
+      "assert_lt_example": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Run stream test with metrics example using assert less than",
+        "env": {
+          "OMP_NUM_THREADS": 4
+        },
+        "run": "wget https://raw.githubusercontent.com/jeffhammond/STREAM/master/stream.c\ngcc -openmp -o stream stream.c\n./stream\n",
+        "metrics": {
+          "copy": {
+            "type": "float",
+            "regex": {
+              "exp": "Copy:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "scale": {
+            "type": "float",
+            "regex": {
+              "exp": "Scale:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "add": {
+            "type": "float",
+            "regex": {
+              "exp": "Add:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "triad": {
+            "type": "float",
+            "regex": {
+              "exp": "Triad:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_lt": [
+            {
+              "name": "copy",
+              "ref": 5000
+            },
+            {
+              "name": "scale",
+              "ref": 5500
+            },
+            {
+              "name": "add",
+              "ref": 6000
+            },
+            {
+              "name": "triad",
+              "ref": 6500
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/assert_ne.yml": {
+      "assert_ne_example": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Test for assert not equal",
+        "vars": {
+          "X": 1,
+          "Y": 1.5,
+          "first": "John",
+          "last": "Smith"
+        },
+        "run": "echo \"X: $X\"\necho \"Y: $Y\"\necho \"Name: $first $last\"\n",
+        "metrics": {
+          "x": {
+            "type": "int",
+            "regex": {
+              "stream": "stdout",
+              "exp": "X:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          },
+          "y": {
+            "type": "float",
+            "regex": {
+              "stream": "stdout",
+              "exp": "Y:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          },
+          "first": {
+            "type": "str",
+            "regex": {
+              "stream": "stdout",
+              "exp": "Name:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          },
+          "last": {
+            "type": "str",
+            "regex": {
+              "stream": "stdout",
+              "exp": "(Smith)$",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_ne": [
+            {
+              "name": "x",
+              "ref": 2
+            },
+            {
+              "name": "y",
+              "ref": 2.5
+            },
+            {
+              "name": "first",
+              "ref": "Robert"
+            },
+            {
+              "name": "last",
+              "ref": "Brown"
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/assert_range.yml": {
+      "assert_range_ex": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Example on assert_range",
+        "env": {
+          "OMP_NUM_THREADS": 4
+        },
+        "run": "wget https://raw.githubusercontent.com/jeffhammond/STREAM/master/stream.c\ngcc -openmp -o stream stream.c\n./stream\n",
+        "metrics": {
+          "copy": {
+            "type": "float",
+            "regex": {
+              "exp": "Copy:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "scale": {
+            "type": "float",
+            "regex": {
+              "exp": "Scale:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "add": {
+            "type": "float",
+            "regex": {
+              "exp": "Add:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          },
+          "triad": {
+            "type": "float",
+            "regex": {
+              "exp": "Triad:\\s+(\\S+)\\s+.*",
+              "stream": "stdout",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "assert_range": [
+            {
+              "name": "copy",
+              "lower": 5000,
+              "upper": 20000
+            },
+            {
+              "name": "scale",
+              "lower": 4500,
+              "upper": 20000
+            },
+            {
+              "name": "add",
+              "lower": 4300,
+              "upper": 20000
+            },
+            {
+              "name": "triad",
+              "lower": 5600,
+              "upper": 20000
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/perf_checks/contains.yml": {
+      "contains_and_not_contains": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Status check based on contains and not contains where test pass",
+        "vars": {
+          "X": 1
+        },
+        "run": "echo \"X: $X\"\n",
+        "metrics": {
+          "x": {
+            "type": "int",
+            "regex": {
+              "stream": "stdout",
+              "exp": "X:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "contains": [
+            {
+              "name": "x",
+              "ref": [
+                1,
+                2,
+                4,
+                8
+              ]
+            }
+          ],
+          "not_contains": [
+            {
+              "name": "x",
+              "ref": [
+                2,
+                4
+              ]
+            }
+          ]
+        }
+      },
+      "assert_contains_fail": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Status check based on contains where test fails",
+        "vars": {
+          "X": 1
+        },
+        "run": "echo \"X: $X\"\n",
+        "metrics": {
+          "x": {
+            "type": "int",
+            "regex": {
+              "stream": "stdout",
+              "exp": "X:\\s+(\\S+)\\s+.*",
+              "item": 1
+            }
+          }
+        },
+        "status": {
+          "contains": [
+            {
+              "name": "x",
+              "ref": [
+                "1",
+                2,
+                4,
+                8
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/exists.yml": {
+      "status_exists": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "status check based for file and directory",
+        "run": "mkdir -p $HOME/dirA\nmkdir -p /tmp/ABC\ntouch file1\n",
+        "status": {
+          "exists": [
+            "$HOME/dirA",
+            "~/.bashrc",
+            "/tmp/ABC",
+            "file1"
+          ]
+        }
+      },
+      "status_exists_failure": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "status check failure for existence",
+        "run": "touch foo",
+        "status": {
+          "exists": [
+            "bar"
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/explicit_state.yml": {
+      "always_pass": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "This test will always 'PASS'",
+        "run": "exit 1",
+        "status": {
+          "state": "PASS"
+        }
+      },
+      "always_fail": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "This test will always 'FAIL'",
+        "run": "exit 0",
+        "status": {
+          "state": "FAIL"
+        }
+      },
+      "test_fail_returncode_match": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "This test will 'FAIL' even if we have returncode match",
+        "run": "exit 1",
+        "status": {
+          "state": "FAIL",
+          "returncode": 1
+        }
+      },
+      "test_pass_returncode_mismatch": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "This test will 'PASS' even if we have returncode mismatch",
+        "run": "exit 1",
+        "status": {
+          "state": "PASS",
+          "returncode": 2
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/file_and_dir_check.yml": {
+      "file_and_dir_checks": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "status check for files and directories",
+        "run": "hostname",
+        "status": {
+          "is_dir": [
+            "$HOME",
+            "$HOME/.bashrc",
+            "/tmp"
+          ]
+        }
+      },
+      "combined_file_and_dir_checks": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "status check for files and directories",
+        "run": "hostname",
+        "status": {
+          "is_dir": [
+            "$HOME",
+            "/tmp"
+          ],
+          "is_file": [
+            "$HOME/.bashrc"
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/file_count.yml": {
+      "file_count_on_directory": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "file count check in directory",
+        "run": "mkdir -p foo\ntouch foo/{1..5}\n",
+        "status": {
+          "file_count": [
+            {
+              "dir": "foo",
+              "count": 5
+            }
+          ]
+        }
+      },
+      "file_count_by_extension": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "file count by extension",
+        "run": "mkdir -p foo/bar\ntouch foo/{1..5}.sh\ntouch foo/bar/{1..3}.py foo/bar/{1..3}.txt\n",
+        "status": {
+          "file_count": [
+            {
+              "dir": "foo",
+              "ext": ".sh",
+              "depth": 1,
+              "count": 5
+            },
+            {
+              "dir": "foo/bar",
+              "ext": [
+                ".py",
+                ".txt"
+              ],
+              "count": 6
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/file_count_filetype.yml": {
+      "file_count_by_filetype": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Count the number of directories and symbolic links",
+        "run": "mkdir -p foo/{bar,baz}\nfind foo -type dir\nln -s foo/bar foo/bar.link\nln -s foo/baz foo/baz.link\n",
+        "status": {
+          "file_count": [
+            {
+              "dir": "foo",
+              "count": 3,
+              "filetype": "dir"
+            },
+            {
+              "dir": "foo",
+              "count": 2,
+              "filetype": "symlink"
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/file_count_file_traverse_limit.yml": {
+      "file_traverse_limit": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Use of file_traverse_limit to limit number of files searched in a directory",
+        "run": "mkdir foo\ntouch foo/{1..99}.txt\n",
+        "status": {
+          "file_count": [
+            {
+              "dir": "foo",
+              "count": 50,
+              "file_traverse_limit": 50
+            },
+            {
+              "dir": "foo",
+              "count": 10,
+              "file_traverse_limit": 20
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/file_count_pattern.yml": {
+      "file_count_by_expression": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "file count by expression",
+        "run": "mkdir -p /tmp\ntouch /tmp/foo{1..5}.txt\nls -l /tmp/foo*.txt\nfilenames=$(find $BUILDTEST_ROOT/buildtest -type f  \\( -name \"defaults.py\" -o -name \"main.py\" \\) -maxdepth 1)\ntotalfiles=$(find $BUILDTEST_ROOT/buildtest -type f  \\( -name \"defaults.py\" -o -name \"main.py\" \\) -maxdepth 1 | wc -l)\necho \"Filenames: $filenames\"\necho \"Total files: $totalfiles\"\n",
+        "status": {
+          "file_count": [
+            {
+              "dir": "/tmp",
+              "filepattern": "foo[1-5].txt$",
+              "count": 5
+            },
+            {
+              "dir": "$BUILDTEST_ROOT/buildtest",
+              "filepattern": "(defaults|main).py$",
+              "count": 2,
+              "depth": 1
+            }
+          ]
+        }
+      },
+      "file_extension_and_filepattern": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "file count by file extension and file pattern",
+        "run": "touch foo{1..5}.txt\ntouch {conf,main}.py\nls -l\n",
+        "status": {
+          "file_count": [
+            {
+              "dir": ".",
+              "ext": ".txt",
+              "filepattern": "(conf|main).py$",
+              "count": 7
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/file_exists_with_number.yml": {
+      "file_exists_pass": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "this test will pass",
+        "run": "mkdir -p 1",
+        "status": {
+          "exists": [
+            "1"
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/is_symlink.yml": {
+      "symlink_test": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "status check based on symbolic link",
+        "run": "ln -s /tmp scratch\nln -s $HOME/.bashrc $HOME/.bashrc_link\n",
+        "status": {
+          "is_symlink": [
+            "scratch",
+            "$HOME/.bashrc_link",
+            "~/.bashrc_link"
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/mode.yml": {
+      "status_logical_and": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Using logical AND to check status",
+        "run": "echo \"This is a test\"\nexit 1\n",
+        "status": {
+          "mode": "all",
+          "returncode": 1,
+          "regex": {
+            "stream": "stdout",
+            "exp": "This is a test"
+          }
+        }
+      },
+      "status_logical_or": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Using logical OR to check status",
+        "run": "echo \"This is a test\"\nexit 1\n",
+        "status": {
+          "mode": "any",
+          "returncode": 0,
+          "regex": {
+            "stream": "stdout",
+            "exp": "This is a test"
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/pass_returncode.yml": {
+      "exit1_fail": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "exit 1 by default is FAIL",
+        "tags": [
+          "tutorials",
+          "fail"
+        ],
+        "run": "exit 1"
+      },
+      "exit1_pass": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "report exit 1 as PASS",
+        "run": "exit 1",
+        "tags": [
+          "tutorials",
+          "pass"
+        ],
+        "status": {
+          "returncode": [
+            1
+          ]
+        }
+      },
+      "returncode_list_mismatch": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "exit 2 failed since it failed to match returncode 1",
+        "run": "exit 2",
+        "tags": [
+          "tutorials",
+          "fail"
+        ],
+        "status": {
+          "returncode": [
+            1,
+            3
+          ]
+        }
+      },
+      "returncode_int_match": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "exit 128 matches returncode 128",
+        "run": "exit 128",
+        "tags": [
+          "tutorials",
+          "pass"
+        ],
+        "status": {
+          "returncode": 128
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/regex_on_filename.yml": {
+      "regex_on_multiple_files": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Test regex on multiple files",
+        "run": "echo \"Hello\" > hello.txt\nbuildtest --help > buildtest_help.txt\n",
+        "status": {
+          "file_regex": [
+            {
+              "file": "hello.txt",
+              "exp": "^(Hello)$"
+            },
+            {
+              "file": "buildtest_help.txt",
+              "exp": "^(usage: buildtest)"
+            }
+          ]
+        }
+      },
+      "regex_on_directory_not_supported": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Test regex on directory is not supported",
+        "run": "mkdir -p hello\necho \"Hello\" > hello/hello.txt\n",
+        "status": {
+          "file_regex": [
+            {
+              "file": "hello",
+              "exp": "^(Hello)$"
+            }
+          ]
+        }
+      },
+      "file_expansion_supported": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Test regex with variable and shell expansion",
+        "run": "echo \"Hello\" > $BUILDTEST_ROOT/hello.txt\necho \"Hello\" > $HOME/hello.txt\n",
+        "status": {
+          "file_regex": [
+            {
+              "file": "$BUILDTEST_ROOT/hello.txt",
+              "exp": "^(Hello)$"
+            },
+            {
+              "file": "~/hello.txt",
+              "exp": "^(Hello)$"
+            }
+          ]
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/runtime_status_test.yml": {
+      "timelimit_min_max": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "Run a sleep job for 2 seconds and test pass if its within 1.0-3.0sec",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "sleep 2",
+        "status": {
+          "runtime": {
+            "min": 1.0,
+            "max": 3.0
+          }
+        }
+      },
+      "timelimit_min": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "Run a sleep job for 2 seconds and test pass if its exceeds min time of 1.0 sec",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "sleep 2",
+        "status": {
+          "runtime": {
+            "min": 1.0
+          }
+        }
+      },
+      "timelimit_max": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "Run a sleep job for 2 seconds and test pass if it's within max time: 5.0 sec",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "sleep 2",
+        "status": {
+          "runtime": {
+            "max": 5.0
+          }
+        }
+      },
+      "timelimit_min_fail": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "This test fails because it runs less than mintime of 10 second",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "sleep 2",
+        "status": {
+          "runtime": {
+            "min": 10.0
+          }
+        }
+      },
+      "timelimit_max_fail": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "This test fails because it exceeds maxtime of 1.0 second",
+        "tags": [
+          "tutorials"
+        ],
+        "run": "sleep 3",
+        "status": {
+          "runtime": {
+            "max": 1.0
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/status_regex.yml": {
+      "status_regex_pass": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "Pass test based on regular expression",
+        "run": "echo \"PASS\"",
+        "status": {
+          "regex": {
+            "stream": "stdout",
+            "exp": "^(PASS)$"
+          }
+        }
+      },
+      "status_regex_fail": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "Pass test based on regular expression",
+        "run": "echo \"FAIL\"",
+        "status": {
+          "regex": {
+            "stream": "stdout",
+            "exp": "^(123FAIL)$"
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml": {
+      "root_disk_usage": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "filesystem",
+          "storage"
+        ],
+        "description": "Check root disk usage and report if it exceeds threshold",
+        "env": {
+          "threshold": 90
+        },
+        "run": "root_disk_usage=`df -a / | tail -n 1 |  awk '{print $5'} | sed 's/[^0-9]*//g'`\n# if root exceeds threshold\nif [ \"$root_disk_usage\" -gt \"$threshold\" ]; then\n  echo \"[WARNING] Root Disk Usage: $root_disk_usage% exceeded threshold of $threshold%\"\n  exit 1\nfi\necho \"[OK] Root disk is below threshold of $threshold%\"\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml": {
+      "kernel_swapusage": {
+        "type": "script",
+        "description": "Retrieve Kernel Swap Usage",
+        "tags": [
+          "configuration"
+        ],
+        "executor": "generic.local.bash",
+        "run": "/usr/sbin/sysctl kernel.swapusage"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml": {
+      "systemd_default_target": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "check if default target is multi-user.target",
+        "run": "if [ \"multi-user.target\" == `systemctl get-default` ]; then\n  echo \"multi-user is the default target\";\n  exit 0\nfi\necho \"multi-user is not the default target\";\nexit 1"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml": {
+      "ulimit_filelock_unlimited": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "Check if file lock is set to unlimited in ulimits",
+        "run": "ulimit -f",
+        "status": {
+          "regex": {
+            "stream": "stdout",
+            "exp": "^unlimited$"
+          }
+        }
+      },
+      "ulimit_cputime_unlimited": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "Check if cputime is set to unlimited in ulimits",
+        "run": "ulimit -t",
+        "status": {
+          "regex": {
+            "stream": "stdout",
+            "exp": "^unlimited$"
+          }
+        }
+      },
+      "ulimit_stacksize_unlimited": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "Check if stack size is set to unlimited in ulimits",
+        "run": "ulimit -s",
+        "status": {
+          "regex": {
+            "stream": "stdout",
+            "exp": "^unlimited$"
+          }
+        }
+      },
+      "ulimit_vmsize_unlimited": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "Check virtual memory size and check if its set to unlimited",
+        "run": "ulimit -v",
+        "status": {
+          "regex": {
+            "stream": "stdout",
+            "exp": "^unlimited$"
+          }
+        }
+      },
+      "ulimit_filedescriptor_4096": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "Check if open file descriptors limit is set to 4096",
+        "run": "ulimit -n",
+        "status": {
+          "regex": {
+            "stream": "stdout",
+            "exp": "^4096$"
+          }
+        }
+      },
+      "ulimit_max_user_process_2048": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "tags": [
+          "system"
+        ],
+        "description": "Check max number of user process limit is set to 2048",
+        "run": "ulimit -u",
+        "status": {
+          "regex": {
+            "stream": "stdout",
+            "exp": "^2048$"
+          }
+        }
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/containers/singularity/build.yml": {
+      "build_sif_from_dockerimage": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "build sif image from docker image docker://godlovedc/lolcow",
+        "tags": [
+          "containers",
+          "singularity"
+        ],
+        "run": "singularity build mylolcow_latest.sif docker://godlovedc/lolcow\nsingularity inspect mylolcow_latest.sif\n"
+      },
+      "build_sandbox_image": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "build sandbox image from docker image docker://godlovedc/lolcow",
+        "tags": [
+          "containers",
+          "singularity"
+        ],
+        "run": "singularity build --sandbox mylolcow_latest_sandbox docker://godlovedc/lolcow"
+      },
+      "build_remoteimages": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "build remote hosted image from AWS",
+        "tags": [
+          "containers",
+          "singularity"
+        ],
+        "vars": {
+          "IMAGE": "alpine_oci_archive.sif"
+        },
+        "run": "singularity pull  https://s3.amazonaws.com/singularity-ci-public/alpine-oci-archive.tar\nsingularity build $IMAGE oci-archive://alpine-oci-archive.tar\nsingularity exec $IMAGE cat /etc/os-release\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/containers/singularity/inspect.yml": {
+      "inspect_image": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Inspect image via 'singularity inspect'",
+        "tags": [
+          "containers",
+          "singularity"
+        ],
+        "vars": {
+          "IMAGE": "alpine.sif"
+        },
+        "run": "singularity pull $IMAGE library://alpine:latest\nsingularity inspect --all $IMAGE\nsingularity inspect -d $IMAGE\nsingularity inspect -e $IMAGE\nsingularity inspect -j $IMAGE\nsingularity inspect -l $IMAGE\nsingularity inspect -r $IMAGE\nsingularity inspect -s $IMAGE\nsingularity inspect -t $IMAGE\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/containers/singularity/pull.yml": {
+      "pullImage_dockerhub": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Pull image docker://godlovedc/lolcow from DockerHub",
+        "tags": [
+          "containers",
+          "singularity"
+        ],
+        "vars": {
+          "IMAGE": "lolcow_latest.sif"
+        },
+        "run": "singularity pull $IMAGE docker://godlovedc/lolcow\nsingularity inspect $IMAGE\n"
+      },
+      "pullImage_sylabscloud": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Pull image library://alpine:latest from Sylabs Cloud",
+        "tags": [
+          "containers",
+          "singularity"
+        ],
+        "vars": {
+          "IMAGE": "alpine.sif"
+        },
+        "run": "singularity pull $IMAGE library://alpine:latest\nsingularity inspect $IMAGE\n"
+      },
+      "pullImage_shub": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Pull image shub://vsoch/singularity-images from SingularityHub",
+        "tags": [
+          "containers",
+          "singularity"
+        ],
+        "vars": {
+          "IMAGE": "singularity-images.sif"
+        },
+        "run": "singularity pull $IMAGE shub://vsoch/singularity-images\nsingularity inspect $IMAGE\n"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/containers/singularity/run.yml": {
+      "runImage": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "run container docker://godlovedc/lolcow",
+        "tags": [
+          "containers",
+          "singularity"
+        ],
+        "run": "singularity run docker://godlovedc/lolcow\nsingularity exec docker://godlovedc/lolcow fortune"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/cobalt/commands.yml": {
+      "qsub_version": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "tags": [
+          "cobalt"
+        ],
+        "description": "print version for qsub command",
+        "run": "qsub --version"
+      },
+      "qselect_version": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "tags": [
+          "cobalt"
+        ],
+        "description": "print version for qselect",
+        "run": "qselect --version"
+      },
+      "cqsub_version": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "print version for cqsub command",
+        "tags": [
+          "cobalt"
+        ],
+        "run": "cqsub --version"
+      },
+      "qdel_version": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "print version for qdel command",
+        "tags": [
+          "cobalt"
+        ],
+        "run": "qdel --version"
+      },
+      "qmove_version": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "print version for qmove command",
+        "tags": [
+          "cobalt"
+        ],
+        "run": "qmove --version"
+      },
+      "show_jobs": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "description": "Show all jobs in queue",
+        "tags": [
+          "cobalt"
+        ],
+        "run": "qstat"
+      },
+      "show_queues": {
+        "type": "script",
+        "executor": "generic.local.sh",
+        "tags": [
+          "cobalt"
+        ],
+        "description": "Show all queues",
+        "run": "qstat -Qf"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/lsf/bhosts.yml": {
+      "display_lsf_hosts": {
+        "description": "Show all hosts in LSF cluster",
+        "type": "script",
+        "executor": "generic.local.bash",
+        "tags": "lsf",
+        "run": "bhosts"
+      },
+      "display_hosts_format": {
+        "description": "Show all hosts with column hostname and status",
+        "type": "script",
+        "executor": "generic.local.bash",
+        "tags": "lsf",
+        "run": "bhosts -o 'host_name status'"
+      },
+      "bhosts_version": {
+        "description": "display version from bhosts command",
+        "type": "script",
+        "executor": "generic.local.bash",
+        "tags": "lsf",
+        "run": "bhosts -V"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/lsf/bmgroups.yml": {
+      "show_host_groups": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Show information about host groups using bmgroup",
+        "tags": "lsf",
+        "run": "bmgroup"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/lsf/bqueues.yml": {
+      "show_lsf_queues": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Show LSF queues",
+        "tags": "lsf",
+        "run": "bqueues"
+      },
+      "show_lsf_queues_formatted": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Show LSF queues with formatted columns",
+        "tags": "lsf",
+        "run": "bqueues -o 'queue_name description priority status'"
+      },
+      "show_lsf_queues_current_user": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Show LSF queues available for current user",
+        "tags": "lsf",
+        "run": "bqueues -u $USER"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/lsf/bugroup.yml": {
+      "show_lsf_user_groups": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Show information about all LSF user groups",
+        "tags": "lsf",
+        "run": "bugroup"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/lsf/lsinfo.yml": {
+      "show_lsf_configuration": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Show LSF configuration using lsinfo",
+        "tags": "lsf",
+        "run": "lsinfo"
+      },
+      "show_lsf_models": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Show information about host models in LSF cluster",
+        "tags": "lsf",
+        "run": "lsinfo -m"
+      },
+      "show_lsf_resources": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Show information about LSF resources",
+        "tags": "lsf",
+        "run": "lsinfo -r"
+      },
+      "lsf_version": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "Display lsf version using lsinfo",
+        "tags": "lsf",
+        "run": "lsinfo -V"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/slurm/sacctmgr.yml": {
+      "show_accounts": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "run sacctmgr list accounts",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sacctmgr list accounts"
+      },
+      "show_users": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "run sacctmgr list users",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sacctmgr list users\nsacctmgr list users $USER\n"
+      },
+      "show_qos": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "run sacctmgr list qos",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sacctmgr list qos"
+      },
+      "show_tres": {
+        "executor": "generic.local.bash",
+        "description": "run sacctmgr list tres",
+        "type": "script",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sacctmgr list tres"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/slurm/scontrol.yml": {
+      "slurm_config": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "run scontrol show config",
+        "tags": [
+          "slurm"
+        ],
+        "run": "scontrol show config"
+      },
+      "show_partition": {
+        "type": "script",
+        "executor": "generic.local.bash",
+        "description": "run scontrol show partition",
+        "tags": [
+          "slurm"
+        ],
+        "run": "scontrol show partition"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/slurm/sinfo.yml": {
+      "nodes_state_down": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "Show nodes in DOWN state",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo -t DOWN"
+      },
+      "nodes_state_reboot": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "Show nodes in REBOOT state",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo -t REBOOT"
+      },
+      "nodes_state_allocated": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "Show nodes in ALLOCATED state",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo -t ALLOCATED"
+      },
+      "nodes_state_completing": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "Show nodes in COMPLETING state",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo -t COMPLETING"
+      },
+      "nodes_state_idle": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "Show nodes in IDLE state",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo -t IDLE"
+      },
+      "node_down_fail_list_reason": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "Show nodes DOWN, DRAINED, FAIL or FAILING and list reason",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo -R"
+      },
+      "dead_nodes": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "Show non-responding nodes",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo --dead"
+      },
+      "get_partitions": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "Get all slurm partitions",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo -a -h -O partitionname"
+      },
+      "sinfo_version": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "get slurm version",
+        "tags": [
+          "slurm"
+        ],
+        "run": "sinfo --version"
+      }
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/slurm/squeue.yml": {
+      "current_user_queue": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "show all current pending jobs for current user (squeue -u $USER)",
+        "tags": [
+          "slurm"
+        ],
+        "run": "squeue -u $USER"
+      },
+      "show_all_jobs": {
+        "executor": "generic.local.bash",
+        "type": "script",
+        "description": "show all pending + running jobs (squeue -a)",
+        "tags": [
+          "slurm"
+        ],
+        "run": "squeue --all"
+      }
+    }
+  },
+  "executor": {
+    "generic.local.bash": {
+      "add_numbers": "Add X+Y",
+      "gcc_version": "Print gcc version",
+      "hello_world": "hello world example",
+      "python_hello": "Hello World python",
+      "circle_area": "Calculate circle of area given a radius",
+      "bash_login_shebang": "customize shebang line with bash login shell",
+      "bash_nonlogin_shebang": "customize shebang line with default bash (nonlogin) shell",
+      "_bin_bash_shell": "/bin/bash shell example",
+      "bash_shell": "bash shell example",
+      "skip_all_tests": "All test in this buildspec are skipped",
+      "this_test_is_also_skipped": "This test is also skipped even if skip is defined in test",
+      "skip": "This test is skipped",
+      "unskipped": "This test is not skipped",
+      "sleep": "sleep 2 seconds",
+      "summary_example": "The summary field can be a multi-line string and exceed 80 char",
+      "string_tag": "tags can be a string",
+      "list_of_strings_tags": "tags can be a list of strings",
+      "variables_bash": "Declare shell variables in bash",
+      "jobA": "no job dependency",
+      "jobB": "job dependency on jobA",
+      "jobC": "job dependency on jobA and jobB",
+      "test1": "This test will pass with exit 1",
+      "test2": "This test will run if test1 has returncode 1",
+      "test3": "This test will run if test1 has returncode 1 and test2 has returncode 2",
+      "pass_test": "This test will always pass",
+      "fail_test": "This test will run if test 'pass_test' is in state 'PASS'",
+      "pass_and_fail_test": "This test will run if pass_test is 'PASS' and fail_test is 'FAIL'",
+      "final_test": "Test will run after 'pass_test', 'fail_test', and 'pass_and_fail_test'",
+      "runtime_test": "This test will sleep 5 second but will fail due to runtime 2sec",
+      "runtime_test_pass": "This test will run when runtime_test_pass is PASS",
+      "runtime_test_fail": "This test will run when runtime_test_pass is FAIL",
+      "metric_file_regex_invalid_file": "capture result metric from file path when we have invalid file path",
+      "metric_regex_example": "capture result metric from output",
+      "metric_file_regex": "capture result metric from file path",
+      "assert_eq_example": "Test for assert equality",
+      "assert_eq_invalid_metric": "An invalid metric name will cause failure",
+      "assert_eq_mismatch": "This test will fail because there is a mismatch in metric x assert equality",
+      "stream_test": "Run stream test with metrics example using assert greater equal",
+      "assert_gt_example": "Run stream test with metrics example using assert greater than.",
+      "assert_le_example": "Run stream test with metrics example using assert less than equal",
+      "assert_lt_example": "Run stream test with metrics example using assert less than",
+      "assert_ne_example": "Test for assert not equal",
+      "assert_range_ex": "Example on assert_range",
+      "contains_and_not_contains": "Status check based on contains and not contains where test pass",
+      "assert_contains_fail": "Status check based on contains where test fails",
+      "status_exists": "status check based for file and directory",
+      "status_exists_failure": "status check failure for existence",
+      "file_and_dir_checks": "status check for files and directories",
+      "combined_file_and_dir_checks": "status check for files and directories",
+      "file_count_on_directory": "file count check in directory",
+      "file_count_by_extension": "file count by extension",
+      "file_count_by_filetype": "Count the number of directories and symbolic links",
+      "file_traverse_limit": "Use of file_traverse_limit to limit number of files searched in a directory",
+      "file_count_by_expression": "file count by expression",
+      "file_extension_and_filepattern": "file count by file extension and file pattern",
+      "file_exists_pass": "this test will pass",
+      "symlink_test": "status check based on symbolic link",
+      "status_logical_and": "Using logical AND to check status",
+      "status_logical_or": "Using logical OR to check status",
+      "exit1_fail": "exit 1 by default is FAIL",
+      "exit1_pass": "report exit 1 as PASS",
+      "returncode_list_mismatch": "exit 2 failed since it failed to match returncode 1",
+      "returncode_int_match": "exit 128 matches returncode 128",
+      "regex_on_multiple_files": "Test regex on multiple files",
+      "regex_on_directory_not_supported": "Test regex on directory is not supported",
+      "file_expansion_supported": "Test regex with variable and shell expansion",
+      "status_regex_pass": "Pass test based on regular expression",
+      "status_regex_fail": "Pass test based on regular expression",
+      "root_disk_usage": "Check root disk usage and report if it exceeds threshold",
+      "kernel_swapusage": "Retrieve Kernel Swap Usage",
+      "systemd_default_target": "check if default target is multi-user.target",
+      "ulimit_filelock_unlimited": "Check if file lock is set to unlimited in ulimits",
+      "ulimit_cputime_unlimited": "Check if cputime is set to unlimited in ulimits",
+      "ulimit_stacksize_unlimited": "Check if stack size is set to unlimited in ulimits",
+      "ulimit_vmsize_unlimited": "Check virtual memory size and check if its set to unlimited",
+      "ulimit_filedescriptor_4096": "Check if open file descriptors limit is set to 4096",
+      "ulimit_max_user_process_2048": "Check max number of user process limit is set to 2048",
+      "build_sif_from_dockerimage": "build sif image from docker image docker://godlovedc/lolcow",
+      "build_sandbox_image": "build sandbox image from docker image docker://godlovedc/lolcow",
+      "build_remoteimages": "build remote hosted image from AWS",
+      "inspect_image": "Inspect image via 'singularity inspect'",
+      "pullImage_dockerhub": "Pull image docker://godlovedc/lolcow from DockerHub",
+      "pullImage_sylabscloud": "Pull image library://alpine:latest from Sylabs Cloud",
+      "pullImage_shub": "Pull image shub://vsoch/singularity-images from SingularityHub",
+      "runImage": "run container docker://godlovedc/lolcow",
+      "display_lsf_hosts": "Show all hosts in LSF cluster",
+      "display_hosts_format": "Show all hosts with column hostname and status",
+      "bhosts_version": "display version from bhosts command",
+      "show_host_groups": "Show information about host groups using bmgroup",
+      "show_lsf_queues": "Show LSF queues",
+      "show_lsf_queues_formatted": "Show LSF queues with formatted columns",
+      "show_lsf_queues_current_user": "Show LSF queues available for current user",
+      "show_lsf_user_groups": "Show information about all LSF user groups",
+      "show_lsf_configuration": "Show LSF configuration using lsinfo",
+      "show_lsf_models": "Show information about host models in LSF cluster",
+      "show_lsf_resources": "Show information about LSF resources",
+      "lsf_version": "Display lsf version using lsinfo",
+      "show_accounts": "run sacctmgr list accounts",
+      "show_users": "run sacctmgr list users",
+      "show_qos": "run sacctmgr list qos",
+      "show_tres": "run sacctmgr list tres",
+      "slurm_config": "run scontrol show config",
+      "show_partition": "run scontrol show partition",
+      "nodes_state_down": "Show nodes in DOWN state",
+      "nodes_state_reboot": "Show nodes in REBOOT state",
+      "nodes_state_allocated": "Show nodes in ALLOCATED state",
+      "nodes_state_completing": "Show nodes in COMPLETING state",
+      "nodes_state_idle": "Show nodes in IDLE state",
+      "node_down_fail_list_reason": "Show nodes DOWN, DRAINED, FAIL or FAILING and list reason",
+      "dead_nodes": "Show non-responding nodes",
+      "get_partitions": "Get all slurm partitions",
+      "sinfo_version": "get slurm version",
+      "current_user_queue": "show all current pending jobs for current user (squeue -u $USER)",
+      "show_all_jobs": "show all pending + running jobs (squeue -a)"
+    },
+    "generic.local.(sh|bash)": {
+      "create_burst_buffer_executors": "Create a burst buffer for multiple executors"
+    },
+    "generic.local.sh": {
+      "foo_bar": "prints variable $FOO",
+      "_bin_sh_shell": "/bin/sh shell example",
+      "sh_shell": "sh shell example",
+      "shell_options": "shell options",
+      "always_pass": "This test will always 'PASS'",
+      "always_fail": "This test will always 'FAIL'",
+      "test_fail_returncode_match": "This test will 'FAIL' even if we have returncode match",
+      "test_pass_returncode_mismatch": "This test will 'PASS' even if we have returncode mismatch",
+      "timelimit_min_max": "Run a sleep job for 2 seconds and test pass if its within 1.0-3.0sec",
+      "timelimit_min": "Run a sleep job for 2 seconds and test pass if its exceeds min time of 1.0 sec",
+      "timelimit_max": "Run a sleep job for 2 seconds and test pass if it's within max time: 5.0 sec",
+      "timelimit_min_fail": "This test fails because it runs less than mintime of 10 second",
+      "timelimit_max_fail": "This test fails because it exceeds maxtime of 1.0 second",
+      "qsub_version": "print version for qsub command",
+      "qselect_version": "print version for qselect",
+      "cqsub_version": "print version for cqsub command",
+      "qdel_version": "print version for qdel command",
+      "qmove_version": "print version for qmove command",
+      "show_jobs": "Show all jobs in queue",
+      "show_queues": "Show all queues"
+    },
+    "generic.local.(bash|sh)": {
+      "executors_vars_env_declaration": "Declaring env and vars by executors section",
+      "multiple_executors": "run test with executor generic.local.bash and generic.local.sh executor",
+      "executors_sbatch_declaration": "Declaring env and vars by executors section",
+      "status_returncode_by_executors": "define status per executor type."
+    }
+  },
+  "tags": {
+    "tutorials": {
+      "add_numbers": "Add X+Y",
+      "hello_world": "hello world example",
+      "foo_bar": "prints variable $FOO",
+      "circle_area": "Calculate circle of area given a radius",
+      "bash_login_shebang": "customize shebang line with bash login shell",
+      "bash_nonlogin_shebang": "customize shebang line with default bash (nonlogin) shell",
+      "_bin_sh_shell": "/bin/sh shell example",
+      "_bin_bash_shell": "/bin/bash shell example",
+      "bash_shell": "bash shell example",
+      "sh_shell": "sh shell example",
+      "shell_options": "shell options",
+      "skip_all_tests": "All test in this buildspec are skipped",
+      "this_test_is_also_skipped": "This test is also skipped even if skip is defined in test",
+      "skip": "This test is skipped",
+      "unskipped": "This test is not skipped",
+      "sleep": "sleep 2 seconds",
+      "summary_example": "The summary field can be a multi-line string and exceed 80 char",
+      "variables_bash": "Declare shell variables in bash",
+      "metric_file_regex_invalid_file": "capture result metric from file path when we have invalid file path",
+      "metric_regex_example": "capture result metric from output",
+      "metric_file_regex": "capture result metric from file path",
+      "executors_vars_env_declaration": "Declaring env and vars by executors section",
+      "multiple_executors": "run test with executor generic.local.bash and generic.local.sh executor",
+      "executors_sbatch_declaration": "Declaring env and vars by executors section",
+      "status_returncode_by_executors": "define status per executor type.",
+      "exit1_fail": "exit 1 by default is FAIL",
+      "exit1_pass": "report exit 1 as PASS",
+      "returncode_list_mismatch": "exit 2 failed since it failed to match returncode 1",
+      "returncode_int_match": "exit 128 matches returncode 128",
+      "timelimit_min_max": "Run a sleep job for 2 seconds and test pass if its within 1.0-3.0sec",
+      "timelimit_min": "Run a sleep job for 2 seconds and test pass if its exceeds min time of 1.0 sec",
+      "timelimit_max": "Run a sleep job for 2 seconds and test pass if it's within max time: 5.0 sec",
+      "timelimit_min_fail": "This test fails because it runs less than mintime of 10 second",
+      "timelimit_max_fail": "This test fails because it exceeds maxtime of 1.0 second"
+    },
+    "jobs": {
+      "create_burst_buffer_executors": "Create a burst buffer for multiple executors"
+    },
+    "python": {
+      "python_hello": "Hello World python",
+      "circle_area": "Calculate circle of area given a radius"
+    },
+    "network": {
+      "string_tag": "tags can be a string",
+      "list_of_strings_tags": "tags can be a list of strings"
+    },
+    "ping": {
+      "list_of_strings_tags": "tags can be a list of strings"
+    },
+    "fail": {
+      "exit1_fail": "exit 1 by default is FAIL",
+      "returncode_list_mismatch": "exit 2 failed since it failed to match returncode 1"
+    },
+    "pass": {
+      "exit1_pass": "report exit 1 as PASS",
+      "returncode_int_match": "exit 128 matches returncode 128"
+    },
+    "system": {
+      "status_regex_pass": "Pass test based on regular expression",
+      "status_regex_fail": "Pass test based on regular expression",
+      "systemd_default_target": "check if default target is multi-user.target",
+      "ulimit_filelock_unlimited": "Check if file lock is set to unlimited in ulimits",
+      "ulimit_cputime_unlimited": "Check if cputime is set to unlimited in ulimits",
+      "ulimit_stacksize_unlimited": "Check if stack size is set to unlimited in ulimits",
+      "ulimit_vmsize_unlimited": "Check virtual memory size and check if its set to unlimited",
+      "ulimit_filedescriptor_4096": "Check if open file descriptors limit is set to 4096",
+      "ulimit_max_user_process_2048": "Check max number of user process limit is set to 2048"
+    },
+    "filesystem": {
+      "root_disk_usage": "Check root disk usage and report if it exceeds threshold"
+    },
+    "storage": {
+      "root_disk_usage": "Check root disk usage and report if it exceeds threshold"
+    },
+    "configuration": {
+      "kernel_swapusage": "Retrieve Kernel Swap Usage"
+    },
+    "containers": {
+      "build_sif_from_dockerimage": "build sif image from docker image docker://godlovedc/lolcow",
+      "build_sandbox_image": "build sandbox image from docker image docker://godlovedc/lolcow",
+      "build_remoteimages": "build remote hosted image from AWS",
+      "inspect_image": "Inspect image via 'singularity inspect'",
+      "pullImage_dockerhub": "Pull image docker://godlovedc/lolcow from DockerHub",
+      "pullImage_sylabscloud": "Pull image library://alpine:latest from Sylabs Cloud",
+      "pullImage_shub": "Pull image shub://vsoch/singularity-images from SingularityHub",
+      "runImage": "run container docker://godlovedc/lolcow"
+    },
+    "singularity": {
+      "build_sif_from_dockerimage": "build sif image from docker image docker://godlovedc/lolcow",
+      "build_sandbox_image": "build sandbox image from docker image docker://godlovedc/lolcow",
+      "build_remoteimages": "build remote hosted image from AWS",
+      "inspect_image": "Inspect image via 'singularity inspect'",
+      "pullImage_dockerhub": "Pull image docker://godlovedc/lolcow from DockerHub",
+      "pullImage_sylabscloud": "Pull image library://alpine:latest from Sylabs Cloud",
+      "pullImage_shub": "Pull image shub://vsoch/singularity-images from SingularityHub",
+      "runImage": "run container docker://godlovedc/lolcow"
+    },
+    "cobalt": {
+      "qsub_version": "print version for qsub command",
+      "qselect_version": "print version for qselect",
+      "cqsub_version": "print version for cqsub command",
+      "qdel_version": "print version for qdel command",
+      "qmove_version": "print version for qmove command",
+      "show_jobs": "Show all jobs in queue",
+      "show_queues": "Show all queues"
+    },
+    "lsf": {
+      "display_lsf_hosts": "Show all hosts in LSF cluster",
+      "display_hosts_format": "Show all hosts with column hostname and status",
+      "bhosts_version": "display version from bhosts command",
+      "show_host_groups": "Show information about host groups using bmgroup",
+      "show_lsf_queues": "Show LSF queues",
+      "show_lsf_queues_formatted": "Show LSF queues with formatted columns",
+      "show_lsf_queues_current_user": "Show LSF queues available for current user",
+      "show_lsf_user_groups": "Show information about all LSF user groups",
+      "show_lsf_configuration": "Show LSF configuration using lsinfo",
+      "show_lsf_models": "Show information about host models in LSF cluster",
+      "show_lsf_resources": "Show information about LSF resources",
+      "lsf_version": "Display lsf version using lsinfo"
+    },
+    "slurm": {
+      "show_accounts": "run sacctmgr list accounts",
+      "show_users": "run sacctmgr list users",
+      "show_qos": "run sacctmgr list qos",
+      "show_tres": "run sacctmgr list tres",
+      "slurm_config": "run scontrol show config",
+      "show_partition": "run scontrol show partition",
+      "nodes_state_down": "Show nodes in DOWN state",
+      "nodes_state_reboot": "Show nodes in REBOOT state",
+      "nodes_state_allocated": "Show nodes in ALLOCATED state",
+      "nodes_state_completing": "Show nodes in COMPLETING state",
+      "nodes_state_idle": "Show nodes in IDLE state",
+      "node_down_fail_list_reason": "Show nodes DOWN, DRAINED, FAIL or FAILING and list reason",
+      "dead_nodes": "Show non-responding nodes",
+      "get_partitions": "Get all slurm partitions",
+      "sinfo_version": "get slurm version",
+      "current_user_queue": "show all current pending jobs for current user (squeue -u $USER)",
+      "show_all_jobs": "show all pending + running jobs (squeue -a)"
+    }
+  },
+  "maintainers": {
+    "@shahzebsiddiqui": [
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml",
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml"
+    ],
+    "@johndoe": [
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/maintainers_example.yml"
+    ],
+    "@bobsmith": [
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/maintainers_example.yml"
+    ]
+  },
+  "paths": [
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials",
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests"
+  ],
+  "invalids": {
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/csh_shell_examples.yml": {
+      "msg": "\"[/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/csh_shell_examples.yml]: Unable to find executor: generic.local.csh in ['generic.local.bash', 'generic.local.sh']\"",
+      "exception": "<class 'buildtest.exceptions.InvalidBuildspecExecutor'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/environment.yml": {
+      "msg": "\"[/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/environment.yml]: Unable to find executor: generic.local.csh in ['generic.local.bash', 'generic.local.sh']\"",
+      "exception": "<class 'buildtest.exceptions.InvalidBuildspecExecutor'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/invalid_buildspec_section.yml": {
+      "msg": "\"[Schema type must be one of the following: ['script', 'compiler', 'spack']. ]: /mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/invalid_buildspec_section.yml\"",
+      "exception": "<class 'buildtest.exceptions.InvalidBuildspecSchemaType'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/invalid_executor.yml": {
+      "msg": "\"[/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/invalid_executor.yml]: Unable to find executor: badexecutor in ['generic.local.bash', 'generic.local.sh']\"",
+      "exception": "<class 'buildtest.exceptions.InvalidBuildspecExecutor'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/invalid_tags.yml": {
+      "msg": "<ValidationError: \"['network', 'network'] is not valid under any of the given schemas\">",
+      "exception": "<class 'jsonschema.exceptions.ValidationError'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/metrics/invalid_metrics.yml": {
+      "msg": "<ValidationError: \"{'type': 'str', 'file_regex': {'file': 'file.txt', 'exp': 'BAR'}, 'regex': {'stream': 'stdout', 'exp': 'BAR'}} is valid under each of {'required': ['file_regex']}, {'required': ['regex']}\">",
+      "exception": "<class 'jsonschema.exceptions.ValidationError'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/metrics/invalid_metric_name.yml": {
+      "msg": "<ValidationError: \"'(foo-bar' does not match '^[A-Za-z0-9_.-]+$'\">",
+      "exception": "<class 'jsonschema.exceptions.ValidationError'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/metrics/missing_required_in_metrics.yml": {
+      "msg": "<ValidationError: \"{'type': 'str'} is not valid under any of the given schemas\">",
+      "exception": "<class 'jsonschema.exceptions.ValidationError'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/test_status/file_exists_exception.yml": {
+      "msg": "<ValidationError: \"1 is not of type 'string'\">",
+      "exception": "<class 'jsonschema.exceptions.ValidationError'>"
+    },
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/pbs/hostname.yml": {
+      "msg": "\"[/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/sched/pbs/hostname.yml]: Unable to find executor: generic.pbs.workq in ['generic.local.bash', 'generic.local.sh']\"",
+      "exception": "<class 'buildtest.exceptions.InvalidBuildspecExecutor'>"
+    }
+  }
+}

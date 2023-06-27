@@ -1,0 +1,5 @@
+buildspecs:
+  invalid_executor:
+    executor: not_valid_executor_name
+    type: script
+    run: hostname

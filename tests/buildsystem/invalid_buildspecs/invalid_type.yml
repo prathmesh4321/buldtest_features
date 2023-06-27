@@ -1,0 +1,5 @@
+buildspecs:
+  type_mismatch:
+    executor: generic.local.sh
+    type: badvalue
+    run: hostname

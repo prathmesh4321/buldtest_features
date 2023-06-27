@@ -1,0 +1,4 @@
+buildspecs:
+  missing_type:
+    executor: generic.local.sh
+    run: hostname

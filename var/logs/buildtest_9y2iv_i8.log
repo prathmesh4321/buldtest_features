@@ -1,0 +1,55 @@
+2023-06-27 11:47:20,359 [system.py:42 - check() ] - [DEBUG] Starting System Compatibility Check
+2023-06-27 11:47:20,360 [system.py:60 - check() ] - [INFO] Machine: x86_64
+2023-06-27 11:47:20,360 [system.py:61 - check() ] - [INFO] Host: LAPTOP-VLKFC9OM
+2023-06-27 11:47:20,360 [system.py:62 - check() ] - [INFO] User: pratham
+2023-06-27 11:47:20,361 [system.py:63 - check() ] - [INFO] Operating System: ubuntu
+2023-06-27 11:47:20,361 [system.py:65 - check() ] - [INFO] System Kernel: Linux and Kernel Release: 5.15.90.1-microsoft-standard-WSL2
+2023-06-27 11:47:20,361 [system.py:67 - check() ] - [INFO] Python Path: /home/pratham/anaconda3/envs/buildtest/bin/python3
+2023-06-27 11:47:20,363 [system.py:68 - check() ] - [INFO] Python Version: 3.7.13
+2023-06-27 11:47:20,363 [system.py:69 - check() ] - [INFO] BUILDTEST_ROOT: /mnt/c/Users/prath/OneDrive/Documents/buildtest
+2023-06-27 11:47:20,368 [system.py:70 - check() ] - [INFO] Path to Buildtest: /mnt/c/Users/prath/OneDrive/Documents/buildtest/bin/buildtest
+2023-06-27 11:47:20,368 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['sbatch', 'sacct', 'sacctmgr', 'sinfo', 'scancel'] for existence.
+2023-06-27 11:47:20,448 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find sbatch command in $PATH
+2023-06-27 11:47:20,448 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['bsub', 'bqueues', 'bkill', 'bjobs'] for existence.
+2023-06-27 11:47:20,528 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find bsub command in $PATH
+2023-06-27 11:47:20,529 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['qsub', 'qstat', 'qdel', 'nodelist', 'showres', 'partlist'] for existence.
+2023-06-27 11:47:20,609 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find qsub command in $PATH
+2023-06-27 11:47:20,609 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['qsub', 'qstat', 'qdel', 'qstart', 'qhold', 'qmgr'] for existence.
+2023-06-27 11:47:20,689 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find qsub command in $PATH
+2023-06-27 11:47:20,689 [system.py:75 - check() ] - [INFO] Finished System Compatibility Check
+2023-06-27 11:47:20,704 [config.py:130 - validate() ] - [DEBUG] Loading default settings schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 11:47:20,720 [utils.py:40 - load_schema() ] - [DEBUG] Successfully loaded schema file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 11:47:20,721 [config.py:134 - validate() ] - [DEBUG] Validating configuration file with schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 11:47:20,726 [config.py:137 - validate() ] - [DEBUG] Validation was successful
+2023-06-27 11:47:20,808 [config.py:188 - _validate_local_executors() ] - [ERROR] "Can't find program: csh"
+2023-06-27 11:47:20,888 [config.py:188 - _validate_local_executors() ] - [ERROR] "Can't find program: zsh"
+2023-06-27 11:47:20,891 [main.py:138 -  main() ] - [INFO] [red]Processing buildtest configuration file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/settings/config.yml
+2023-06-27 11:47:20,911 [build.py:654 - __init__() ] - [DEBUG] Tests will be written in /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests
+2023-06-27 11:47:20,916 [setup.py:83 - __init__() ] - [DEBUG] Getting Executors from buildtest settings
+2023-06-27 11:47:20,968 [build.py:139 - discover_buildspecs() ] - [DEBUG] Discovering buildspecs based on tags=None, executor=None, buildspec=['/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml'], excluded buildspec=None
+2023-06-27 11:47:20,984 [build.py:442 - discover_by_buildspecs() ] - [DEBUG] Buildspec: /mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml is a file
+2023-06-27 11:47:20,990 [build.py:455 - discover_by_buildspecs() ] - [INFO] Based on input argument we discovered the following buildspecs: ['/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml']
+2023-06-27 11:47:20,991 [build.py:185 - discover_buildspecs() ] - [DEBUG] buildtest discovered the following Buildspecs: ['/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml']
+2023-06-27 11:47:21,026 [parser.py:167 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml with schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/global.schema.json
+2023-06-27 11:47:21,027 [parser.py:179 - validate() ] - [INFO] Validating test - 'hello_world' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml
+2023-06-27 11:47:21,027 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'hello_world' is using schema type: 'script'
+2023-06-27 11:47:21,028 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 11:47:21,029 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: hello_world by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 11:47:21,029 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 11:47:21,030 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml
+2023-06-27 11:47:21,030 [base.py:149 - __init__() ] - [DEBUG] Processing Test: hello_world
+2023-06-27 11:47:21,041 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 11:47:21,042 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 11:47:21,087 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2
+2023-06-27 11:47:21,118 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/stage
+2023-06-27 11:47:24,530 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/stage/hello_world.sh
+2023-06-27 11:47:24,573 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/stage/hello_world.sh
+2023-06-27 11:47:24,663 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/stage/hello_world_build.sh
+2023-06-27 11:47:24,670 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/stage/hello_world_build.sh
+2023-06-27 11:47:24,723 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/hello_world_build.sh
+2023-06-27 11:47:24,743 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/stage
+2023-06-27 11:47:24,783 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail hello_world_build.sh
+2023-06-27 11:47:24,784 [local.py:82 -   run() ] - [DEBUG] Return code: 0 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/hello_world.sh
+2023-06-27 11:47:24,784 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/stage/hello_world.out
+2023-06-27 11:47:24,793 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/b35c3fd2/stage/hello_world.err
+2023-06-27 11:47:24,986 [build.py:1550 - update_report() ] - [DEBUG] Updating report file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/report.json

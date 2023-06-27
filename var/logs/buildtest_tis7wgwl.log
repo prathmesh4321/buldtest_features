@@ -1,0 +1,238 @@
+2023-06-27 14:20:03,190 [system.py:42 - check() ] - [DEBUG] Starting System Compatibility Check
+2023-06-27 14:20:03,191 [system.py:60 - check() ] - [INFO] Machine: x86_64
+2023-06-27 14:20:03,192 [system.py:61 - check() ] - [INFO] Host: LAPTOP-VLKFC9OM
+2023-06-27 14:20:03,192 [system.py:62 - check() ] - [INFO] User: pratham
+2023-06-27 14:20:03,192 [system.py:63 - check() ] - [INFO] Operating System: ubuntu
+2023-06-27 14:20:03,192 [system.py:65 - check() ] - [INFO] System Kernel: Linux and Kernel Release: 5.15.90.1-microsoft-standard-WSL2
+2023-06-27 14:20:03,193 [system.py:67 - check() ] - [INFO] Python Path: /home/pratham/anaconda3/envs/buildtest/bin/python3
+2023-06-27 14:20:03,194 [system.py:68 - check() ] - [INFO] Python Version: 3.7.13
+2023-06-27 14:20:03,195 [system.py:69 - check() ] - [INFO] BUILDTEST_ROOT: /mnt/c/Users/prath/OneDrive/Documents/buildtest
+2023-06-27 14:20:03,199 [system.py:70 - check() ] - [INFO] Path to Buildtest: /mnt/c/Users/prath/OneDrive/Documents/buildtest/bin/buildtest
+2023-06-27 14:20:03,200 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['sbatch', 'sacct', 'sacctmgr', 'sinfo', 'scancel'] for existence.
+2023-06-27 14:20:03,280 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find sbatch command in $PATH
+2023-06-27 14:20:03,281 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['bsub', 'bqueues', 'bkill', 'bjobs'] for existence.
+2023-06-27 14:20:03,362 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find bsub command in $PATH
+2023-06-27 14:20:03,362 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['qsub', 'qstat', 'qdel', 'nodelist', 'showres', 'partlist'] for existence.
+2023-06-27 14:20:03,444 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find qsub command in $PATH
+2023-06-27 14:20:03,444 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['qsub', 'qstat', 'qdel', 'qstart', 'qhold', 'qmgr'] for existence.
+2023-06-27 14:20:03,524 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find qsub command in $PATH
+2023-06-27 14:20:03,524 [system.py:75 - check() ] - [INFO] Finished System Compatibility Check
+2023-06-27 14:20:03,540 [config.py:130 - validate() ] - [DEBUG] Loading default settings schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 14:20:03,559 [utils.py:40 - load_schema() ] - [DEBUG] Successfully loaded schema file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 14:20:03,559 [config.py:134 - validate() ] - [DEBUG] Validating configuration file with schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 14:20:03,565 [config.py:137 - validate() ] - [DEBUG] Validation was successful
+2023-06-27 14:20:03,647 [config.py:188 - _validate_local_executors() ] - [ERROR] "Can't find program: csh"
+2023-06-27 14:20:03,729 [config.py:188 - _validate_local_executors() ] - [ERROR] "Can't find program: zsh"
+2023-06-27 14:20:03,731 [main.py:138 -  main() ] - [INFO] [red]Processing buildtest configuration file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/settings/config.yml
+2023-06-27 14:20:03,752 [build.py:654 - __init__() ] - [DEBUG] Tests will be written in /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests
+2023-06-27 14:20:03,757 [setup.py:83 - __init__() ] - [DEBUG] Getting Executors from buildtest settings
+2023-06-27 14:20:03,811 [build.py:139 - discover_buildspecs() ] - [DEBUG] Discovering buildspecs based on tags=None, executor=None, buildspec=['/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration'], excluded buildspec=None
+2023-06-27 14:20:03,838 [build.py:430 - discover_by_buildspecs() ] - [DEBUG] Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration is a directory so traversing directory tree to find all Buildspec files with .yml extension
+2023-06-27 14:20:03,896 [build.py:455 - discover_by_buildspecs() ] - [INFO] Based on input argument we discovered the following buildspecs: ['/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml', '/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml', '/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml', '/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml']
+2023-06-27 14:20:03,896 [build.py:185 - discover_buildspecs() ] - [DEBUG] buildtest discovered the following Buildspecs: ['/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml', '/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml', '/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml', '/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml']
+2023-06-27 14:20:03,944 [parser.py:167 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml with schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/global.schema.json
+2023-06-27 14:20:03,945 [parser.py:179 - validate() ] - [INFO] Validating test - 'ulimit_filelock_unlimited' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,945 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'ulimit_filelock_unlimited' is using schema type: 'script'
+2023-06-27 14:20:03,946 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:03,947 [parser.py:179 - validate() ] - [INFO] Validating test - 'ulimit_cputime_unlimited' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,947 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'ulimit_cputime_unlimited' is using schema type: 'script'
+2023-06-27 14:20:03,947 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:03,948 [parser.py:179 - validate() ] - [INFO] Validating test - 'ulimit_stacksize_unlimited' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,948 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'ulimit_stacksize_unlimited' is using schema type: 'script'
+2023-06-27 14:20:03,948 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:03,949 [parser.py:179 - validate() ] - [INFO] Validating test - 'ulimit_vmsize_unlimited' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,949 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'ulimit_vmsize_unlimited' is using schema type: 'script'
+2023-06-27 14:20:03,949 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:03,950 [parser.py:179 - validate() ] - [INFO] Validating test - 'ulimit_filedescriptor_4096' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,950 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'ulimit_filedescriptor_4096' is using schema type: 'script'
+2023-06-27 14:20:03,950 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:03,951 [parser.py:179 - validate() ] - [INFO] Validating test - 'ulimit_max_user_process_2048' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,951 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'ulimit_max_user_process_2048' is using schema type: 'script'
+2023-06-27 14:20:03,952 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:03,952 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: ulimit_filelock_unlimited by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:03,952 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:03,953 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,953 [base.py:149 - __init__() ] - [DEBUG] Processing Test: ulimit_filelock_unlimited
+2023-06-27 14:20:03,968 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:03,969 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:03,969 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: ulimit_cputime_unlimited by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:03,969 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:03,970 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,970 [base.py:149 - __init__() ] - [DEBUG] Processing Test: ulimit_cputime_unlimited
+2023-06-27 14:20:03,985 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:03,985 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:03,985 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: ulimit_stacksize_unlimited by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:03,986 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:03,986 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:03,986 [base.py:149 - __init__() ] - [DEBUG] Processing Test: ulimit_stacksize_unlimited
+2023-06-27 14:20:04,001 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:04,001 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:04,002 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: ulimit_vmsize_unlimited by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:04,002 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:04,002 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:04,003 [base.py:149 - __init__() ] - [DEBUG] Processing Test: ulimit_vmsize_unlimited
+2023-06-27 14:20:04,017 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:04,017 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:04,018 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: ulimit_filedescriptor_4096 by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:04,018 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:04,018 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:04,018 [base.py:149 - __init__() ] - [DEBUG] Processing Test: ulimit_filedescriptor_4096
+2023-06-27 14:20:04,033 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:04,033 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:04,034 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: ulimit_max_user_process_2048 by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:04,034 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:04,034 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml
+2023-06-27 14:20:04,034 [base.py:149 - __init__() ] - [DEBUG] Processing Test: ulimit_max_user_process_2048
+2023-06-27 14:20:04,049 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:04,049 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:04,081 [parser.py:167 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml with schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/global.schema.json
+2023-06-27 14:20:04,081 [parser.py:179 - validate() ] - [INFO] Validating test - 'root_disk_usage' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml
+2023-06-27 14:20:04,082 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'root_disk_usage' is using schema type: 'script'
+2023-06-27 14:20:04,082 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:04,082 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: root_disk_usage by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:04,083 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:04,083 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml
+2023-06-27 14:20:04,083 [base.py:149 - __init__() ] - [DEBUG] Processing Test: root_disk_usage
+2023-06-27 14:20:04,098 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:04,099 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:04,130 [parser.py:167 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml with schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/global.schema.json
+2023-06-27 14:20:04,130 [parser.py:179 - validate() ] - [INFO] Validating test - 'kernel_swapusage' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml
+2023-06-27 14:20:04,131 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'kernel_swapusage' is using schema type: 'script'
+2023-06-27 14:20:04,131 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:04,132 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: kernel_swapusage by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:04,132 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:04,132 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml
+2023-06-27 14:20:04,133 [base.py:149 - __init__() ] - [DEBUG] Processing Test: kernel_swapusage
+2023-06-27 14:20:04,147 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:04,147 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:04,179 [parser.py:167 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml with schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/global.schema.json
+2023-06-27 14:20:04,180 [parser.py:179 - validate() ] - [INFO] Validating test - 'systemd_default_target' in recipe: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml
+2023-06-27 14:20:04,180 [parser.py:119 - _check_schema_type() ] - [INFO] Test: 'systemd_default_target' is using schema type: 'script'
+2023-06-27 14:20:04,180 [parser.py:196 - validate() ] - [INFO] Validating /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml with schema:  /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/script.schema.json
+2023-06-27 14:20:04,181 [builders.py:332 - generate_builders() ] - [DEBUG] Searching for builders for test: systemd_default_target by applying regular expression with available builders: ['generic.local.bash', 'generic.local.sh'] 
+2023-06-27 14:20:04,181 [builders.py:340 - generate_builders() ] - [DEBUG] Found a match in buildspec with available executors via re.fullmatch(generic.local.bash,generic.local.bash)
+2023-06-27 14:20:04,181 [base.py:148 - __init__() ] - [DEBUG] Processing Buildspec File: /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml
+2023-06-27 14:20:04,182 [base.py:149 - __init__() ] - [DEBUG] Processing Test: systemd_default_target
+2023-06-27 14:20:04,196 [base.py:185 - shell_detection() ] - [DEBUG] Using shell bash
+2023-06-27 14:20:04,197 [base.py:186 - shell_detection() ] - [DEBUG] Shebang used for test: #!/usr/bin/bash 
+2023-06-27 14:20:04,257 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21
+2023-06-27 14:20:04,290 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/stage
+2023-06-27 14:20:04,505 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/stage/ulimit_filelock_unlimited.sh
+2023-06-27 14:20:04,548 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/stage/ulimit_filelock_unlimited.sh
+2023-06-27 14:20:04,637 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/stage/ulimit_filelock_unlimited_build.sh
+2023-06-27 14:20:04,643 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/stage/ulimit_filelock_unlimited_build.sh
+2023-06-27 14:20:04,695 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/ulimit_filelock_unlimited_build.sh
+2023-06-27 14:20:04,736 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6
+2023-06-27 14:20:04,769 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/stage
+2023-06-27 14:20:04,972 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/stage/ulimit_cputime_unlimited.sh
+2023-06-27 14:20:05,014 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/stage/ulimit_cputime_unlimited.sh
+2023-06-27 14:20:05,103 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/stage/ulimit_cputime_unlimited_build.sh
+2023-06-27 14:20:05,111 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/stage/ulimit_cputime_unlimited_build.sh
+2023-06-27 14:20:05,163 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/ulimit_cputime_unlimited_build.sh
+2023-06-27 14:20:05,208 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b
+2023-06-27 14:20:05,243 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/stage
+2023-06-27 14:20:05,454 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/stage/ulimit_stacksize_unlimited.sh
+2023-06-27 14:20:05,495 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/stage/ulimit_stacksize_unlimited.sh
+2023-06-27 14:20:05,580 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/stage/ulimit_stacksize_unlimited_build.sh
+2023-06-27 14:20:05,586 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/stage/ulimit_stacksize_unlimited_build.sh
+2023-06-27 14:20:05,640 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/ulimit_stacksize_unlimited_build.sh
+2023-06-27 14:20:05,685 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a
+2023-06-27 14:20:05,719 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/stage
+2023-06-27 14:20:05,927 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/stage/ulimit_vmsize_unlimited.sh
+2023-06-27 14:20:05,966 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/stage/ulimit_vmsize_unlimited.sh
+2023-06-27 14:20:06,051 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/stage/ulimit_vmsize_unlimited_build.sh
+2023-06-27 14:20:06,057 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/stage/ulimit_vmsize_unlimited_build.sh
+2023-06-27 14:20:06,108 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/ulimit_vmsize_unlimited_build.sh
+2023-06-27 14:20:06,151 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6
+2023-06-27 14:20:06,186 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/stage
+2023-06-27 14:20:06,392 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/stage/ulimit_filedescriptor_4096.sh
+2023-06-27 14:20:06,431 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/stage/ulimit_filedescriptor_4096.sh
+2023-06-27 14:20:06,515 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/stage/ulimit_filedescriptor_4096_build.sh
+2023-06-27 14:20:06,521 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/stage/ulimit_filedescriptor_4096_build.sh
+2023-06-27 14:20:06,571 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/ulimit_filedescriptor_4096_build.sh
+2023-06-27 14:20:06,614 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257
+2023-06-27 14:20:06,649 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/stage
+2023-06-27 14:20:06,856 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/stage/ulimit_max_user_process_2048.sh
+2023-06-27 14:20:06,895 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/stage/ulimit_max_user_process_2048.sh
+2023-06-27 14:20:06,981 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/stage/ulimit_max_user_process_2048_build.sh
+2023-06-27 14:20:06,988 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/stage/ulimit_max_user_process_2048_build.sh
+2023-06-27 14:20:07,040 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/ulimit_max_user_process_2048_build.sh
+2023-06-27 14:20:07,087 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934
+2023-06-27 14:20:07,120 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/stage
+2023-06-27 14:20:07,333 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/stage/root_disk_usage.sh
+2023-06-27 14:20:07,372 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/stage/root_disk_usage.sh
+2023-06-27 14:20:07,456 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/stage/root_disk_usage_build.sh
+2023-06-27 14:20:07,462 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/stage/root_disk_usage_build.sh
+2023-06-27 14:20:07,511 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/root_disk_usage_build.sh
+2023-06-27 14:20:07,554 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc
+2023-06-27 14:20:07,584 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/stage
+2023-06-27 14:20:07,774 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/stage/kernel_swapusage.sh
+2023-06-27 14:20:07,810 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/stage/kernel_swapusage.sh
+2023-06-27 14:20:07,887 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/stage/kernel_swapusage_build.sh
+2023-06-27 14:20:07,893 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/stage/kernel_swapusage_build.sh
+2023-06-27 14:20:07,938 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/kernel_swapusage_build.sh
+2023-06-27 14:20:07,979 [base.py:519 - _build_setup() ] - [DEBUG] Creating test directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a
+2023-06-27 14:20:08,011 [base.py:529 - _build_setup() ] - [DEBUG] Creating the stage directory: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/stage
+2023-06-27 14:20:08,215 [base.py:639 - _write_test() ] - [INFO] Opening Test File for Writing: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/stage/systemd_default_target.sh
+2023-06-27 14:20:08,254 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/stage/systemd_default_target.sh
+2023-06-27 14:20:08,338 [base.py:612 - _write_build_script() ] - [DEBUG] Writing build script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/stage/systemd_default_target_build.sh
+2023-06-27 14:20:08,344 [base.py:809 - _set_execute_perm() ] - [DEBUG] Changing permission to 755 for script: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/stage/systemd_default_target_build.sh
+2023-06-27 14:20:08,395 [base.py:618 - _write_build_script() ] - [DEBUG] Copying build script to: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/systemd_default_target_build.sh
+2023-06-27 14:20:08,439 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/stage
+2023-06-27 14:20:08,493 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail kernel_swapusage_build.sh
+2023-06-27 14:20:08,493 [local.py:82 -   run() ] - [DEBUG] Return code: 255 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/kernel_swapusage.sh
+2023-06-27 14:20:08,494 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/stage/kernel_swapusage.out
+2023-06-27 14:20:08,501 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/stage/kernel_swapusage.err
+2023-06-27 14:20:08,559 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/stage
+2023-06-27 14:20:08,635 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail systemd_default_target_build.sh
+2023-06-27 14:20:08,636 [local.py:82 -   run() ] - [DEBUG] Return code: 1 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/systemd_default_target.sh
+2023-06-27 14:20:08,636 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/stage/systemd_default_target.out
+2023-06-27 14:20:08,644 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/stage/systemd_default_target.err
+2023-06-27 14:20:08,698 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/stage
+2023-06-27 14:20:08,736 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail ulimit_max_user_process_2048_build.sh
+2023-06-27 14:20:08,737 [local.py:82 -   run() ] - [DEBUG] Return code: 0 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/ulimit_max_user_process_2048.sh
+2023-06-27 14:20:08,737 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/stage/ulimit_max_user_process_2048.out
+2023-06-27 14:20:08,745 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/stage/ulimit_max_user_process_2048.err
+2023-06-27 14:20:08,797 [checks.py:174 - regex_check() ] - [DEBUG] Detected regex stream 'stdout' so reading output file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/ulimit_max_user_process_2048.out
+2023-06-27 14:20:08,797 [checks.py:188 - regex_check() ] - [DEBUG] Applying re.search with exp: ^2048$
+2023-06-27 14:20:08,804 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/stage
+2023-06-27 14:20:08,840 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail ulimit_vmsize_unlimited_build.sh
+2023-06-27 14:20:08,841 [local.py:82 -   run() ] - [DEBUG] Return code: 0 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/ulimit_vmsize_unlimited.sh
+2023-06-27 14:20:08,841 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/stage/ulimit_vmsize_unlimited.out
+2023-06-27 14:20:08,849 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/stage/ulimit_vmsize_unlimited.err
+2023-06-27 14:20:08,899 [checks.py:174 - regex_check() ] - [DEBUG] Detected regex stream 'stdout' so reading output file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/ulimit_vmsize_unlimited.out
+2023-06-27 14:20:08,899 [checks.py:188 - regex_check() ] - [DEBUG] Applying re.search with exp: ^unlimited$
+2023-06-27 14:20:08,906 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/stage
+2023-06-27 14:20:08,942 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail ulimit_filedescriptor_4096_build.sh
+2023-06-27 14:20:08,942 [local.py:82 -   run() ] - [DEBUG] Return code: 0 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/ulimit_filedescriptor_4096.sh
+2023-06-27 14:20:08,943 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/stage/ulimit_filedescriptor_4096.out
+2023-06-27 14:20:08,951 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/stage/ulimit_filedescriptor_4096.err
+2023-06-27 14:20:09,002 [checks.py:174 - regex_check() ] - [DEBUG] Detected regex stream 'stdout' so reading output file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/ulimit_filedescriptor_4096.out
+2023-06-27 14:20:09,002 [checks.py:188 - regex_check() ] - [DEBUG] Applying re.search with exp: ^4096$
+2023-06-27 14:20:09,009 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/stage
+2023-06-27 14:20:09,049 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail ulimit_filelock_unlimited_build.sh
+2023-06-27 14:20:09,050 [local.py:82 -   run() ] - [DEBUG] Return code: 0 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/ulimit_filelock_unlimited.sh
+2023-06-27 14:20:09,050 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/stage/ulimit_filelock_unlimited.out
+2023-06-27 14:20:09,057 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/stage/ulimit_filelock_unlimited.err
+2023-06-27 14:20:09,106 [checks.py:174 - regex_check() ] - [DEBUG] Detected regex stream 'stdout' so reading output file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/ulimit_filelock_unlimited.out
+2023-06-27 14:20:09,106 [checks.py:188 - regex_check() ] - [DEBUG] Applying re.search with exp: ^unlimited$
+2023-06-27 14:20:09,113 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/stage
+2023-06-27 14:20:09,150 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail ulimit_stacksize_unlimited_build.sh
+2023-06-27 14:20:09,151 [local.py:82 -   run() ] - [DEBUG] Return code: 0 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/ulimit_stacksize_unlimited.sh
+2023-06-27 14:20:09,151 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/stage/ulimit_stacksize_unlimited.out
+2023-06-27 14:20:09,158 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/stage/ulimit_stacksize_unlimited.err
+2023-06-27 14:20:09,208 [checks.py:174 - regex_check() ] - [DEBUG] Detected regex stream 'stdout' so reading output file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/ulimit_stacksize_unlimited.out
+2023-06-27 14:20:09,209 [checks.py:188 - regex_check() ] - [DEBUG] Applying re.search with exp: ^unlimited$
+2023-06-27 14:20:09,221 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/stage
+2023-06-27 14:20:09,261 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail ulimit_cputime_unlimited_build.sh
+2023-06-27 14:20:09,262 [local.py:82 -   run() ] - [DEBUG] Return code: 0 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/ulimit_cputime_unlimited.sh
+2023-06-27 14:20:09,262 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/stage/ulimit_cputime_unlimited.out
+2023-06-27 14:20:09,270 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/stage/ulimit_cputime_unlimited.err
+2023-06-27 14:20:09,320 [checks.py:174 - regex_check() ] - [DEBUG] Detected regex stream 'stdout' so reading output file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/ulimit_cputime_unlimited.out
+2023-06-27 14:20:09,320 [checks.py:188 - regex_check() ] - [DEBUG] Applying re.search with exp: ^unlimited$
+2023-06-27 14:20:09,344 [local.py:58 -   run() ] - [DEBUG] Changing to directory /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/stage
+2023-06-27 14:20:09,417 [base.py:374 -   run() ] - [DEBUG] Running Test via command: bash --norc --noprofile -eo pipefail root_disk_usage_build.sh
+2023-06-27 14:20:09,418 [local.py:82 -   run() ] - [DEBUG] Return code: 0 for test: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/root_disk_usage.sh
+2023-06-27 14:20:09,418 [local.py:94 -   run() ] - [DEBUG] Writing test output to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/stage/root_disk_usage.out
+2023-06-27 14:20:09,426 [local.py:98 -   run() ] - [DEBUG] Writing test error to file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/stage/root_disk_usage.err
+2023-06-27 14:20:09,549 [build.py:1550 - update_report() ] - [DEBUG] Updating report file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/report.json

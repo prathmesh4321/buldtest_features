@@ -1,0 +1,28 @@
+2023-06-27 14:52:22,180 [system.py:42 - check() ] - [DEBUG] Starting System Compatibility Check
+2023-06-27 14:52:22,181 [system.py:60 - check() ] - [INFO] Machine: x86_64
+2023-06-27 14:52:22,181 [system.py:61 - check() ] - [INFO] Host: LAPTOP-VLKFC9OM
+2023-06-27 14:52:22,182 [system.py:62 - check() ] - [INFO] User: pratham
+2023-06-27 14:52:22,182 [system.py:63 - check() ] - [INFO] Operating System: ubuntu
+2023-06-27 14:52:22,182 [system.py:65 - check() ] - [INFO] System Kernel: Linux and Kernel Release: 5.15.90.1-microsoft-standard-WSL2
+2023-06-27 14:52:22,182 [system.py:67 - check() ] - [INFO] Python Path: /home/pratham/anaconda3/envs/buildtest/bin/python3
+2023-06-27 14:52:22,183 [system.py:68 - check() ] - [INFO] Python Version: 3.7.13
+2023-06-27 14:52:22,183 [system.py:69 - check() ] - [INFO] BUILDTEST_ROOT: /mnt/c/Users/prath/OneDrive/Documents/buildtest
+2023-06-27 14:52:22,188 [system.py:70 - check() ] - [INFO] Path to Buildtest: /mnt/c/Users/prath/OneDrive/Documents/buildtest/bin/buildtest
+2023-06-27 14:52:22,189 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['sbatch', 'sacct', 'sacctmgr', 'sinfo', 'scancel'] for existence.
+2023-06-27 14:52:22,270 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find sbatch command in $PATH
+2023-06-27 14:52:22,270 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['bsub', 'bqueues', 'bkill', 'bjobs'] for existence.
+2023-06-27 14:52:22,350 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find bsub command in $PATH
+2023-06-27 14:52:22,350 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['qsub', 'qstat', 'qdel', 'nodelist', 'showres', 'partlist'] for existence.
+2023-06-27 14:52:22,431 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find qsub command in $PATH
+2023-06-27 14:52:22,432 [system.py:147 - check_binaries() ] - [DEBUG] We will check the following binaries ['qsub', 'qstat', 'qdel', 'qstart', 'qhold', 'qmgr'] for existence.
+2023-06-27 14:52:22,514 [system.py:151 - check_binaries() ] - [DEBUG] Cannot find qsub command in $PATH
+2023-06-27 14:52:22,515 [system.py:75 - check() ] - [INFO] Finished System Compatibility Check
+2023-06-27 14:52:22,530 [config.py:130 - validate() ] - [DEBUG] Loading default settings schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 14:52:22,547 [utils.py:40 - load_schema() ] - [DEBUG] Successfully loaded schema file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 14:52:22,547 [config.py:134 - validate() ] - [DEBUG] Validating configuration file with schema: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/schemas/settings.schema.json
+2023-06-27 14:52:22,553 [config.py:137 - validate() ] - [DEBUG] Validation was successful
+2023-06-27 14:52:22,636 [config.py:188 - _validate_local_executors() ] - [ERROR] "Can't find program: csh"
+2023-06-27 14:52:22,717 [config.py:188 - _validate_local_executors() ] - [ERROR] "Can't find program: zsh"
+2023-06-27 14:52:22,719 [main.py:138 -  main() ] - [INFO] [red]Processing buildtest configuration file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/settings/config.yml
+2023-06-27 14:52:22,738 [report.py:257 -  load() ] - [DEBUG] Loading report file: /mnt/c/Users/prath/OneDrive/Documents/buildtest/var/report.json
+2023-06-27 14:52:22,739 [report.py:192 - _check_format_fields() ] - [DEBUG] Checking format fields: name,id,state,runtime,returncode

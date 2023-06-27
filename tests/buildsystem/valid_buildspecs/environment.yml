@@ -1,0 +1,9 @@
+buildspecs:
+  # Shell would be accepted to indicate a single line shell command (or similar)
+  hello_dinosaur:
+    executor: generic.local.bash
+    type: script
+    env:
+      FIRST_NAME: avocado
+      LAST_NAME: dinosaur
+    run: printf "${FIRST_NAME} ${LAST_NAME}\n"

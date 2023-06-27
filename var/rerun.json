@@ -1,0 +1,28 @@
+{
+  "configuration": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/settings/config.yml",
+  "buildspecs": [
+    "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration"
+  ],
+  "tags": null,
+  "exclude_tags": null,
+  "filter": null,
+  "exclude_buildspecs": null,
+  "executors": null,
+  "report_file": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/report.json",
+  "stage": null,
+  "remove_stagedir": false,
+  "testdir": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests",
+  "maxpendtime": null,
+  "pollinterval": null,
+  "account": null,
+  "rebuild": null,
+  "retry": 1,
+  "modules": null,
+  "modulepurge": false,
+  "unload_modules": null,
+  "numprocs": null,
+  "numnodes": null,
+  "executor_type": null,
+  "timeout": null,
+  "limit": null
+}

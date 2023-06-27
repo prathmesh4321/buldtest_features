@@ -1,0 +1,26 @@
+system:
+  generic:
+    hostnames: ['.*']
+    moduletool: N/A
+    pager: False
+    executors:
+      defaults:
+        pollinterval: 5
+        maxpendtime: 30
+      local:
+        bash:
+          description: submit jobs on local machine using bash shell
+          shell: bash
+        sh:
+          description: submit jobs on local machine using sh shell
+          shell: sh
+      pbs:
+        workq:
+          queue: workq
+    compilers:
+      compiler:
+        gcc:
+          default:
+            cc: /usr/bin/gcc
+            cxx: /usr/bin/g++
+            fc: /usr/bin/gfortran

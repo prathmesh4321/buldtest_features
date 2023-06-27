@@ -1,0 +1,7 @@
+buildspecs:
+  duplicate_string_tags:
+    type: script
+    executor: generic.local.bash
+    description: duplicate strings in tags list is not allowed
+    tags: [network, network]
+    run: hostname

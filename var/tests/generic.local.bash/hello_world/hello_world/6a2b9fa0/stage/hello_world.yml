@@ -1,0 +1,9 @@
+buildspecs:
+  hello_world:
+    executor: generic.local.bash
+    type: script
+    tags: tutorials
+    description: "hello world example"
+    run: echo "hello world!"
+maintainers:
+- "@shahzebsiddiqui"

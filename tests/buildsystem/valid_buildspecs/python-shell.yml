@@ -1,0 +1,12 @@
+buildspecs:
+  circle_area:
+    executor: generic.local.bash
+    type: script
+    shell: python
+    description: "Calculate circle of area given a radius"
+    run: |
+      import math
+      radius = 2
+      area = math.pi * radius * radius
+      print("Circle Radius ", radius)
+      print("Area of circle ", area)

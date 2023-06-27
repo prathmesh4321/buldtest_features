@@ -1,0 +1,45 @@
+{
+  "command": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/bin/buildtest build -b /mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml",
+  "user": "pratham",
+  "hostname": "LAPTOP-VLKFC9OM",
+  "platform": "Linux",
+  "date": "2023/06/27 11:02:21",
+  "buildtest": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/bin/buildtest",
+  "python": "/home/pratham/anaconda3/envs/buildtest/bin/python3",
+  "python_version": "3.7.13",
+  "testdir": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests",
+  "configuration": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/settings/config.yml",
+  "system": "generic",
+  "logpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/.history/0/buildtest_bjd7f9qd.log",
+  "invalid_buildspecs": [],
+  "buildspecs": {
+    "detected": [
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml"
+    ],
+    "included": [
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml"
+    ],
+    "excluded": []
+  },
+  "test_summary": {
+    "pass": "1",
+    "fail": "0",
+    "total": "1",
+    "pass_rate": "100.000",
+    "fail_rate": "0.000"
+  },
+  "builders": {
+    "6a2b9fa0-68b3-4257-81cc-e3ba72fdd276": {
+      "name": "hello_world",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/tutorials/hello_world.yml",
+      "tags": "tutorials",
+      "executors": "generic.local.bash",
+      "state": "PASS",
+      "returncode": 0,
+      "runtime": 0.030575,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/6a2b9fa0/hello_world.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/6a2b9fa0/hello_world.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/hello_world/hello_world/6a2b9fa0/hello_world.out"
+    }
+  }
+}

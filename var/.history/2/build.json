@@ -1,0 +1,166 @@
+{
+  "command": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/bin/buildtest build -b /mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration",
+  "user": "pratham",
+  "hostname": "LAPTOP-VLKFC9OM",
+  "platform": "Linux",
+  "date": "2023/06/27 14:20:09",
+  "buildtest": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/bin/buildtest",
+  "python": "/home/pratham/anaconda3/envs/buildtest/bin/python3",
+  "python_version": "3.7.13",
+  "testdir": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests",
+  "configuration": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/buildtest/settings/config.yml",
+  "system": "generic",
+  "logpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/.history/2/buildtest_tis7wgwl.log",
+  "invalid_buildspecs": [],
+  "buildspecs": {
+    "detected": [
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml",
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml",
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml",
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml"
+    ],
+    "included": [
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml",
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml",
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml",
+      "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml"
+    ],
+    "excluded": []
+  },
+  "test_summary": {
+    "pass": "4",
+    "fail": "5",
+    "total": "9",
+    "pass_rate": "44.444",
+    "fail_rate": "55.556"
+  },
+  "builders": {
+    "3f44785a-315b-4818-aa1a-011f51830f2e": {
+      "name": "systemd_default_target",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/systemd-default-target.yml",
+      "tags": [
+        "system"
+      ],
+      "executors": "generic.local.bash",
+      "state": "FAIL",
+      "returncode": 1,
+      "runtime": 0.064586,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/systemd_default_target.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/systemd_default_target.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/systemd-default-target/systemd_default_target/3f44785a/systemd_default_target.out"
+    },
+    "5a1ddfd6-6ccb-40c9-b759-d49ef3149a88": {
+      "name": "ulimit_cputime_unlimited",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml",
+      "tags": [
+        "system"
+      ],
+      "executors": "generic.local.bash",
+      "state": "PASS",
+      "returncode": 0,
+      "runtime": 0.026589,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/ulimit_cputime_unlimited.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/ulimit_cputime_unlimited.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_cputime_unlimited/5a1ddfd6/ulimit_cputime_unlimited.out"
+    },
+    "f85902e6-92bb-4f0f-8f16-14ef427b41b0": {
+      "name": "ulimit_filedescriptor_4096",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml",
+      "tags": [
+        "system"
+      ],
+      "executors": "generic.local.bash",
+      "state": "FAIL",
+      "returncode": 0,
+      "runtime": 0.024191,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/ulimit_filedescriptor_4096.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/ulimit_filedescriptor_4096.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filedescriptor_4096/f85902e6/ulimit_filedescriptor_4096.out"
+    },
+    "29eac16a-f939-4a6f-b5eb-c7cf3bfb77a6": {
+      "name": "ulimit_vmsize_unlimited",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml",
+      "tags": [
+        "system"
+      ],
+      "executors": "generic.local.bash",
+      "state": "PASS",
+      "returncode": 0,
+      "runtime": 0.02457,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/ulimit_vmsize_unlimited.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/ulimit_vmsize_unlimited.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_vmsize_unlimited/29eac16a/ulimit_vmsize_unlimited.out"
+    },
+    "bc8d3c21-aefb-4249-b196-e801b50cb328": {
+      "name": "ulimit_filelock_unlimited",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml",
+      "tags": [
+        "system"
+      ],
+      "executors": "generic.local.bash",
+      "state": "PASS",
+      "returncode": 0,
+      "runtime": 0.027043,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/ulimit_filelock_unlimited.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/ulimit_filelock_unlimited.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_filelock_unlimited/bc8d3c21/ulimit_filelock_unlimited.out"
+    },
+    "b8cd4a5b-43b1-4bb5-8bcd-8a133a2320f0": {
+      "name": "ulimit_stacksize_unlimited",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml",
+      "tags": [
+        "system"
+      ],
+      "executors": "generic.local.bash",
+      "state": "FAIL",
+      "returncode": 0,
+      "runtime": 0.02535,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/ulimit_stacksize_unlimited.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/ulimit_stacksize_unlimited.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_stacksize_unlimited/b8cd4a5b/ulimit_stacksize_unlimited.out"
+    },
+    "189e2934-9e0d-4aa3-942a-04133fd7e90c": {
+      "name": "root_disk_usage",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/disk_usage.yml",
+      "tags": [
+        "filesystem",
+        "storage"
+      ],
+      "executors": "generic.local.bash",
+      "state": "PASS",
+      "returncode": 0,
+      "runtime": 0.059948,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/root_disk_usage.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/root_disk_usage.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/disk_usage/root_disk_usage/189e2934/root_disk_usage.out"
+    },
+    "3c873257-2d87-4cdf-b7d2-6b464b2d6154": {
+      "name": "ulimit_max_user_process_2048",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/ulimits.yml",
+      "tags": [
+        "system"
+      ],
+      "executors": "generic.local.bash",
+      "state": "FAIL",
+      "returncode": 0,
+      "runtime": 0.025952,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/ulimit_max_user_process_2048.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/ulimit_max_user_process_2048.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/ulimits/ulimit_max_user_process_2048/3c873257/ulimit_max_user_process_2048.out"
+    },
+    "7412d2fc-d925-4c9e-9cc7-ca44157fe110": {
+      "name": "kernel_swapusage",
+      "buildspec": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/general_tests/configuration/kernel_state.yml",
+      "tags": [
+        "configuration"
+      ],
+      "executors": "generic.local.bash",
+      "state": "FAIL",
+      "returncode": 255,
+      "runtime": 0.033904,
+      "testpath": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/kernel_swapusage.sh",
+      "errfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/kernel_swapusage.err",
+      "outfile": "/mnt/c/Users/prath/OneDrive/Documents/buildtest/var/tests/generic.local.bash/kernel_state/kernel_swapusage/7412d2fc/kernel_swapusage.out"
+    }
+  }
+}

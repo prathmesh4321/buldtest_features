@@ -1,0 +1,4 @@
+buildspecs:
+  missing_executor:
+    type: script
+    run: hostname
