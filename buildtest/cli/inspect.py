@@ -363,7 +363,7 @@ def inspect_buildspec(report, input_buildspecs, all_records=None, pager=None):
             continue
 
         search_buildspecs.append(abs_fname)
-    print(search_buildspecs)
+    
     if not search_buildspecs:
         sys.exit(
             f"There are no buildspecs in cache based on input buildspecs: {input_buildspecs}"
@@ -375,15 +375,13 @@ def inspect_buildspec(report, input_buildspecs, all_records=None, pager=None):
     # returns a list of buildspecs from the report cache
     available_buildspecs = list(report.get_buildspecs())
 
-    print(available_buildspecs)
-
     # filter out buildspecs not found in report
     search_buildspecs = [
         buildspec
         for buildspec in search_buildspecs
         if buildspec in available_buildspecs
     ]
-    print(search_buildspecs)
+
     # we stop if there are no buildspecs
     if not search_buildspecs:
         msg = "Unable to find any buildspecs in cache, please specify one of the following buildspecs: \n"
@@ -446,7 +444,7 @@ def print_by_name(report, names):
 
 
 def inspect_by_name(report, names, pager=None):
-    """Implements command ``buildtest inspect name`` which will print all test records by given name in JSON format.
+    """The method implements command ``buildtest inspect name`` which will print all test records by given name in JSON format.
 
     .. code-block:: console
 
