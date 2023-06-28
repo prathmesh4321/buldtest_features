@@ -12,12 +12,15 @@ from rich.table import Table
 
 
 def fetch_test_names(report, names):
-    """Return a list of builders given input test names by search the report file for valid records. If test is found it will be returned as a builder name. If names
+    """Return a list of builders given input test names by searching the report file for valid records. If test is found it will be returned as a builder name. If names
     are specified without test ID then we retrieve latest record for test name. If names are specified with ID we find the first matching test record.
 
     Args:
         report (buildtest.cli.report.Report): An instance of Report class
         names (list): A list of test names
+    
+    Returns:
+        query_builders (list): A list of builders  
     """
     query_builders = []
     name_lookup = report.lookup()
@@ -59,6 +62,9 @@ def print_builders(report):
 
     Args:
         report (str): Path to report file
+    
+    Returns:
+        None
     """
 
     builders = report.builder_names()
@@ -73,6 +79,9 @@ def print_terse(table, no_header=None, console_color=None):
         table (dict): Table with columns required for the ``buildtest inspect list`` command.
         no_header (bool, optional): Determine whether to print header in terse format.
         console_color (bool, optional): Select desired color when displaying results
+    
+    Returns:
+        None
     """
 
     row_entry = [table[key] for key in table.keys()]
@@ -107,6 +116,9 @@ def inspect_list(
         color (bool, optional): Print table output of ``buildtest inspect list`` with selected color
         pager (bool, optional): Print output in paging format
         row_count (bool, optional): Print total number of test runs
+    
+    Returns:
+        None
     """
     consoleColor = checkColor(color)
 
@@ -189,6 +201,9 @@ def print_by_query(
         testpath (bool, optional): Print testpath when set to True
         buildscript (bool, optional): Print buildscript when set to True
         buildenv (bool, optional): Print buildenv when set to True
+    
+    Returns:
+        None
     """
 
     records = {}
@@ -295,6 +310,9 @@ def inspect_query(
         buildscript (bool, optional): Print buildscript when set to True
         buildenv (bool, optional): Print buildenv when set to True
         pager (bool, optional): Print output in paging format
+    
+    Returns:
+        None
     """
 
     if pager:
@@ -331,6 +349,9 @@ def inspect_buildspec(report, input_buildspecs, all_records=None, pager=None):
         input_buildspecs (list): List of buildspecs to search in report file. This is specified as positional arguments to ``buildtest inspect buildspec``
         all_records (bool): Determine whether to display all records for every test that matches the buildspec. By default we retrieve the latest record.
         pager (bool, optional): Print output in paging format
+    
+    Returns:
+        None
     """
 
     search_buildspecs = []
@@ -401,6 +422,9 @@ def print_by_name(report, names):
     Args:
         report (buildtest.cli.report.Report): An instance of Report class
         names (list): List of test names to search in report file. This is specified as positional arguments to ``buildtest inspect name``
+
+    Returns:
+        None
     """
 
     query_builders = fetch_test_names(report=report, names=names)
@@ -438,6 +462,9 @@ def inspect_by_name(report, names, pager=None):
         report (buildtest.cli.report.Report): An instance of Report class
         names (list): List of test names to search in report file. This is specified as positional arguments to ``buildtest inspect name``
         pager (bool, optional): Print output in paging format
+    
+    Returns:
+        None
     """
 
     if pager:
